@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 1</h1>
+
+		<p>
+			Знайти суму, добуток та частку двох дійсних чисел. Результат вивести
+			у формі таблиці
+		</p>
+		<script>
+			//1.Вводимо необхідні дані
+
+			let a = parseInt(prompt("введіть число 1"));
+			let b = parseInt(prompt("введіть число 2"));
+
+			//2.знаходимо результат
+
+			let summ = a + b;
+			let product = a * b;
+			let fraction = a / b;
+
+			//3.Виводимо результат
+
+			document.write(`
+				<table>
+					<tr>
+				   	<th>Операція</th>
+				   	<th>Значення</th>
+					</tr>
+					<tr>
+      				<td>Число 1</td>
+      				<td>${a}</td>
+					</tr>
+   				<tr>
+      				<td>Число 2</td>
+      				<td>${b}</td>
+   				</tr>
+					<tr>
+				   	<td>Сума</td>
+				   	<td>${summ}</td>
+					</tr>
+					<tr>
+   					<td>Добуток</td>
+				   	<td>${product}</td>
+					</tr>
+					<tr>
+				   	<td>Частка</td>
+				   	<td>${fraction}</td>
+					</tr>
+				</table>
+			`);
+		</script>
+	</body>
+</html>

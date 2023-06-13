@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 0</h1>
+
+		<p>
+         Обчислити значення виразів
+         <ol>
+            <li>S1=a+12+b</li>
+            <li>S2 = √(a + b / 2a)</li>
+            <li>S3=<sup>3</sup>&radic;(a + b)c</li>
+            <li>S4=sin(a-b)</li>
+         </ol>
+      </p>
+		<script>
+			//1.Вводимо необхідні дані
+
+         let a = parseFloat(prompt('введіть число а'))
+         let b = parseFloat(prompt('введіть число b'))
+         let c = parseFloat(prompt('введіть число c'))
+
+			//2.знаходимо результат
+
+			let s1 = (a +12 + b).toFixed(2)
+			let s2 = Math.sqrt(a + b / (2 * a)).toFixed(2);
+			let s3 = Math.cbrt((a+b)*c).toFixed(2)
+			let s4 = Math.sin(a/-b).toFixed(2)
+
+			//3.Виводимо результат
+
+			document.write (`Ось вирахувані приклади: <Br><Br>`)
+			document.write (`S1 =${s1} <Br>`)
+			document.write (`S2 =${s2} <Br>`)
+			document.write (`S3 =${s3} <Br>`)
+			document.write (`S4 =${s4}`)
+
+		</script>
+	</body>
+</html>

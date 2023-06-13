@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 4</h1>
+
+		<p>
+			Дано довжину у сантиметрах. Визначати скільки це метрів і
+			кілометрів.
+		</p>
+		<script>
+			//1.Вводимо необхідні дані
+
+			let length = parseInt(prompt(`Введіть кількість см`));
+			const METER = 100;
+			const KILOMETER = 100000;
+
+			//2.знаходимо результат
+
+			let lengthInMeters = length / METER;
+			let lengthInKilometers = length / KILOMETER;
+
+			//3.Виводимо результат
+
+			document.write(
+				`${length}см це ${lengthInMeters}метра а також ${lengthInKilometers}кілометра`
+			);
+		</script>
+	</body>
+</html>
