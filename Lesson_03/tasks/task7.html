@@ -15,9 +15,37 @@
 		<script>
 			//1.Вводимо необхідні дані
 
+			const monthNumber = parseInt(prompt(`Введіть номер місяця`));
+			let message;
+
 			//2.знаходимо результат
 
-			//3.Виводимо результат
+			switch (true) {
+				case 1 === monthNumber:
+				case 2 === monthNumber:
+				case 12 === monthNumber:
+					message = `Відноситься до зими`;
+					break;
+				case 3 === monthNumber:
+				case 4 === monthNumber:
+				case 5 === monthNumber:
+					message = `Відноситься до весни`;
+					break;
+				case 6 === monthNumber:
+				case 7 === monthNumber:
+				case 8 === monthNumber:
+					message = `Відноситься до літа`;
+					break;
+				case 9 === monthNumber:
+				case 10 === monthNumber:
+				case 11 === monthNumber:
+					message = `Відноситься до осені`;
+					break;
+				default:
+					message = `Ви ввели невірне число`;
+					break;
+			}
+			alert(message);
 		</script>
 	</body>
 </html>

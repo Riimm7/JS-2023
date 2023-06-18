@@ -15,9 +15,19 @@
 		<script>
 			//1.Вводимо необхідні дані
 
+			const schoolChildAge = 7;
+			const studentAge = 18;
+			const workerAge = 23;
+			const pensionerAge = 65;
+			const userAge = parseInt(prompt(`Введіть ваш вік`));
+
 			//2.знаходимо результат
 
-			//3.Виводимо результат
+			if (userAge >= pensionerAge) alert(`Ви пенсіонер`);
+			else if (userAge >= workerAge) alert(`Ви працівник`);
+			else if (userAge >= studentAge) alert(`Ви студент`);
+			else if (userAge >= schoolChildAge) alert(`Ви школяр`);
+			else alert(`Ви дитина у дитсадку`);
 		</script>
 	</body>
 </html>

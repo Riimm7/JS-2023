@@ -16,9 +16,28 @@
 		<script>
 			//1.Вводимо необхідні дані
 
+			const drivingLicenseCategory = prompt(
+				`Введіть категорію ваших прав`
+			);
+			let message;
+
 			//2.знаходимо результат
 
-			//3.Виводимо результат
+			switch (true) {
+				case `A` === drivingLicenseCategory:
+					message = `Ви можете керувати мотоциклом`;
+					break;
+				case `B` === drivingLicenseCategory:
+					message = `Ви можете керувати легковим автомобілем`;
+					break;
+				case `C` === drivingLicenseCategory:
+					message = `Ви можете керувати грузовим автомобілем`;
+					break;
+				default:
+					message = `Невірна категорія прав`;
+					break;
+			}
+			alert(message);
 		</script>
 	</body>
 </html>

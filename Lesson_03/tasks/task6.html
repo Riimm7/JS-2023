@@ -14,9 +14,38 @@
 		<script>
 			//1.Вводимо необхідні дані
 
+			const dayOfTheWeek = parseInt(prompt(`Введіть номер дня тижня`));
+			let message;
+
 			//2.знаходимо результат
 
-			//3.Виводимо результат
+			switch (true) {
+				case 1 === dayOfTheWeek:
+					message = `Сьогодні Понеділок`;
+					break;
+				case 2 === dayOfTheWeek:
+					message = `Сьогодні Вівторок`;
+					break;
+				case 3 === dayOfTheWeek:
+					message = `Сьогодні Середа`;
+					break;
+				case 4 === dayOfTheWeek:
+					message = `Сьогодні Четвер`;
+					break;
+				case 5 === dayOfTheWeek:
+					message = `Сьогодні Пятниця`;
+					break;
+				case 6 === dayOfTheWeek:
+					message = `Сьогодні Субота`;
+					break;
+				case 7 === dayOfTheWeek:
+					message = `Сьогодні Неділя`;
+					break;
+				default:
+					message = `Ви ввели невірне число`;
+					break;
+			}
+			alert(message);
 		</script>
 	</body>
 </html>

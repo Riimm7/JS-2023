@@ -16,9 +16,21 @@
 		<script>
 			//1.Вводимо необхідні дані
 
+			let nameFirstChild = prompt(`Імя першої дитини`);
+			let nameSecondChild = prompt(`Імя другої дитини`);
+			let candyFirstChild = prompt(
+				`Кількість цукерок у дитини з іменем ${nameFirstChild}`
+			);
+			let candySecondChild = prompt(
+				`Кількість цукерок у дитини з іменем ${nameSecondChild}`
+			);
+
 			//2.знаходимо результат
 
-			//3.Виводимо результат
+			if (candyFirstChild === candySecondChild)
+				alert("Кількість цукерок однакова");
+			else if (candyFirstChild > candySecondChild) alert(nameFirstChild);
+			else alert(nameSecondChild);
 		</script>
 	</body>
 </html>

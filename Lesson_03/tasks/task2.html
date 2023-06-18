@@ -16,9 +16,16 @@
 		<script>
 			//1.Вводимо необхідні дані
 
+			let priceOfGoods = prompt(`Ціна товару`);
+			let amountOfMoney = prompt(`Кількість грошей`);
+
 			//2.знаходимо результат
 
-			//3.Виводимо результат
+			if (amountOfMoney === priceOfGoods)
+				confirm("Гарного дня, будемо раді вас бачити наступного разу");
+			else if (amountOfMoney > priceOfGoods)
+				confirm(`Бажаєте придбати лотерейний квиток вартістю 4грн?`);
+			else alert("У вас недостатньо грошей");
 		</script>
 	</body>
 </html>
