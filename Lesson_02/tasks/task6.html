@@ -17,20 +17,32 @@
 		<script>
 			//1.Вводимо необхідні дані
 
-			let cost1 = parseFloat(prompt("Вартість першого товару"));
-			let count1 = parseInt(prompt("Кількість першого товару"));
+			let priceOfFirstProdukt = parseFloat(
+				prompt("Вартість першого товару")
+			);
+			let quantityFirstProdukt = parseFloat(
+				prompt("Кількість першого товару")
+			);
 
-			let cost2 = parseFloat(prompt("Вартість другого товару"));
-			let count2 = parseInt(prompt("Кількість другого товару"));
+			let priceOfSecondProdukt = parseFloat(
+				prompt("Вартість другого товару")
+			);
+			let quantitySecondProdukt = parseFloat(
+				prompt("Кількість другого товару")
+			);
 
-			let cost3 = parseFloat(prompt("Вартість третього товару"));
-			let count3 = parseInt(prompt("Кількість третього товару"));
+			let priceOfThirdProdukt = parseFloat(
+				prompt("Вартість третього товару")
+			);
+			let quantityThirdProdukt = parseFloat(
+				prompt("Кількість третього товару")
+			);
 
 			//2.знаходимо результат
 
-			let total1 = cost1 * count1;
-			let total2 = cost2 * count2;
-			let total3 = cost3 * count3;
+			let total1 = priceOfFirstProdukt * quantityFirstProdukt;
+			let total2 = priceOfSecondProdukt * quantitySecondProdukt;
+			let total3 = priceOfThirdProdukt * quantityThirdProdukt;
 			let totalCost = total1 + total2 + total3;
 
 			//3.Виводимо результат
@@ -38,22 +50,22 @@
 			document.write(`
 				<div>
 					<p>Товар 1:</p>
-					<p>Вартість: ${cost1.toFixed(2)} грн</p>
-					<p>Кількість: ${count1}</p>
+					<p>Вартість: ${priceOfFirstProdukt.toFixed(2)} грн</p>
+					<p>Кількість: ${quantityFirstProdukt}</p>
 					<p>Підсумок: ${total1.toFixed(2)} грн</p>
 				</div>
 				
 				<div>
 					<p>Товар 2:</p>
-					<p>Вартість: ${cost2.toFixed(2)} грн</p>
-					<p>Кількість: ${count2}</p>
+					<p>Вартість: ${priceOfSecondProdukt.toFixed(2)} грн</p>
+					<p>Кількість: ${quantitySecondProdukt}</p>
 					<p>Підсумок: ${total2.toFixed(2)} грн</p>
 				</div>
 				
 				<div>
 					<p>Товар 3:</p>
-					<p>Вартість: ${cost3.toFixed(2)} грн</p>
-					<p>Кількість: ${count3}</p>
+					<p>Вартість: ${priceOfThirdProdukt.toFixed(2)} грн</p>
+					<p>Кількість: ${quantityThirdProdukt}</p>
 					<p>Підсумок: ${total3.toFixed(2)} грн</p>
 				</div>
 				<Br>

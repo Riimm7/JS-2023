@@ -21,11 +21,10 @@
 
 			//2.знаходимо результат
 
-			let hours = (totalSeconds / SECONDS_PER_HOUR).toFixed(0);
-			let minutes = (
-				(totalSeconds % SECONDS_PER_HOUR) /
-				SECONDS_PER_MINUTE
-			).toFixed(0);
+			let hours = Math.floor(totalSeconds / SECONDS_PER_HOUR);
+			let minutes = Math.floor(
+				(totalSeconds % SECONDS_PER_HOUR) / SECONDS_PER_MINUTE
+			);
 
 			//3.Виводимо результат
 
