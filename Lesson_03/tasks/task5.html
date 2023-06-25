@@ -18,19 +18,19 @@
 
 			const drivingLicenseCategory = prompt(
 				`Введіть категорію ваших прав`
-			);
+			).toUpperCase();
 			let message;
 
 			//2.знаходимо результат
 
-			switch (true) {
-				case `A` === drivingLicenseCategory:
+			switch (drivingLicenseCategory) {
+				case `A`:
 					message = `Ви можете керувати мотоциклом`;
 					break;
-				case `B` === drivingLicenseCategory:
+				case `B`:
 					message = `Ви можете керувати легковим автомобілем`;
 					break;
-				case `C` === drivingLicenseCategory:
+				case `C`:
 					message = `Ви можете керувати грузовим автомобілем`;
 					break;
 				default:

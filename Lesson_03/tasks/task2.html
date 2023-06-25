@@ -16,16 +16,41 @@
 		<script>
 			//1.Вводимо необхідні дані
 
-			let priceOfGoods = prompt(`Ціна товару`);
-			let amountOfMoney = prompt(`Кількість грошей`);
+			const priceOfGoods = parseFloat(prompt("Ціна товару"));
+			const amountOfMoney = parseFloat(prompt("Кількість грошей"));
+			const lotteryPrice = 4;
 
 			//2.знаходимо результат
 
-			if (amountOfMoney === priceOfGoods)
-				confirm("Гарного дня, будемо раді вас бачити наступного разу");
-			else if (amountOfMoney > priceOfGoods)
-				confirm(`Бажаєте придбати лотерейний квиток вартістю 4грн?`);
-			else alert("У вас недостатньо грошей");
+			//це варіант коду який я писав сам інтуїтивно, який хотів пустити на перевірку
+
+			// if (amountOfMoney < lotteryPrice) alert("У вас недостатньо грошей");
+			// else if (amountOfMoney < priceOfGoods)
+			// 	confirm(
+			// 		`Не вистачає грошей на товар, бажаєте придбати лотерейний квиток за ${lotteryPrice}грн?`
+			// 	);
+			// else if (amountOfMoney >= priceOfGoods + lotteryPrice)
+			// 	confirm(
+			// 		`Ви успішно здійснили покупку, бажаєте придбати лотерейний квиток за ${lotteryPrice}грн?`
+			// 	);
+			// else alert("Ви успішно здійснили покупку");
+
+			//цей варіант написав коли переглядав розбір дз в 4 уроці, напевно цей варіант кращий
+
+			if (amountOfMoney < lotteryPrice) alert("У вас недостатньо грошей");
+			else {
+				if (amountOfMoney < priceOfGoods)
+					confirm(
+						`Не вистачає грошей на товар, бажаєте придбати лотерейний квиток за ${lotteryPrice}грн?`
+					);
+				else {
+					alert("Ви успішно здійснили покупку");
+					if (amountOfMoney >= priceOfGoods + lotteryPrice)
+						confirm(
+							`Ви успішно здійснили покупку, бажаєте придбати лотерейний квиток за ${lotteryPrice}грн?`
+						);
+				}
+			}
 		</script>
 	</body>
 </html>

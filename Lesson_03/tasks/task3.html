@@ -17,7 +17,7 @@
 
 			let randomNumberfrom1to5 = Math.floor(Math.random() * 5 + 1);
 			let userNumber = parseInt(
-				prompt(`Спробуйте вгадати число від 1 до 5`)
+				prompt("Спробуйте вгадати число від 1 до 5")
 			);
 
 			//2.знаходимо результат
@@ -25,17 +25,19 @@
 			console.log(randomNumberfrom1to5);
 
 			if (userNumber === randomNumberfrom1to5) {
-				alert(`Вітаю ви відгадали число!`);
+				alert("Вітаю ви відгадали число!");
 			} else {
-				alert(`Ви не відгадали, але у вас є ще одна спроба`);
+				alert("Ви не відгадали, але у вас є ще одна спроба");
 				userNumber = parseInt(
-					prompt(`Спробуйте вгадати число від 1 до 5`)
+					prompt("Спробуйте вгадати число від 1 до 5")
+					//а можна було без першого алерта, а писати зразу в промт, що не вгадали і пропонувати ввести число
 				);
-				if (userNumber === randomNumberfrom1to5) {
-					alert(`Вітаю ви відгадали число!`);
-				} else {
-					alert(`Нажаль ви не відгадали число :(`);
-				}
+				if (userNumber === randomNumberfrom1to5)
+					alert("Вітаю ви відгадали число!");
+				else
+					alert(
+						`Нажаль ви не відгадали число, загадане число було ${randomNumberfrom1to5}`
+					);
 			}
 		</script>
 	</body>
