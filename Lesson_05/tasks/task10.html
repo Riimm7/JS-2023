@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+				font-size: 18px;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			input {
+				margin-bottom: 10px;
+			}
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		</style>
+		<h1>Задача 10</h1>
+
+		<p>
+			Знайти суму всіх непарних чисел, що знаходяться між заданими
+			користувачем числами.
+		</p>
+		<script>
+			// користувач вводить 1 число
+			// користувач вводить 2 число
+			// визначається чи 1 число є парним, якщо так, то число++
+			// визначається чи 2 число є парним, якщо так, то число--
+			// цикл бере перше число і в кожній ітерації додає до нього +2 до тих пір доки воно не стане числом 2
+			let userFirstNumber = parseInt(prompt("введіть перше число"));
+			let userSecondNumber = parseInt(prompt("введіть друге число"));
+			let sumUserNumbers = 0;
+			let modifiedNumber = userFirstNumber;
+			document.write(`ваше перше число = ${userFirstNumber}<br>`);
+			document.write(`ваше друге число = ${userSecondNumber}<br>`);
+			if (userFirstNumber + 3 === userSecondNumber) {
+				sumUserNumbers = userSecondNumber - 1;
+				document.write(
+					`в данному числовому відрізку є тільки 1 непарне число це = ${sumUserNumbers}`
+				);
+			} else {
+				if (userSecondNumber > userFirstNumber && userFirstNumber > 0) {
+					if (userFirstNumber % 2 === 0) {
+						userFirstNumber++;
+					}
+					if (userSecondNumber % 2 === 0) {
+						userSecondNumber--;
+					}
+					if (
+						userFirstNumber !== userSecondNumber &&
+						userFirstNumber + 2 !== userSecondNumber
+					) {
+						do {
+							modifiedNumber = modifiedNumber + 2;
+							sumUserNumbers += modifiedNumber;
+							// document.write(`${modifiedNumber} `);
+						} while (modifiedNumber <= userSecondNumber - 2);
+						document.write(
+							`<br>сума всіх непарних чисел в заданому вами числовому відрізку = ${sumUserNumbers}`
+						);
+					} else {
+						document.write(
+							"немає непарних чисел у відрізку між першим числом і другим"
+						);
+					}
+				} else {
+					alert("невірно введені дані");
+				}
+			}
+		</script>
+	</body>
+</html>

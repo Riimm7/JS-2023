@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+				font-size: 18px;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			input {
+				margin-bottom: 10px;
+			}
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		</style>
+		<h1>Задача 11</h1>
+
+		<p>
+			Знайти суму 5 непарних чисел, що знаходяться між заданими
+			користувачем числами.
+		</p>
+		<script>
+			let userFirstNumber = parseInt(prompt("введіть перше число"));
+			let userSecondNumber = parseInt(prompt("введіть друге число"));
+			let sumUserNumbers = 0;
+			document.write(`ваше перше число = ${userFirstNumber}<br>`);
+			document.write(`ваше друге число = ${userSecondNumber}<br>`);
+			if (userFirstNumber + 3 === userSecondNumber) {
+				sumUserNumbers = userSecondNumber - 1;
+				document.write(
+					`сума 5 непарних чисел у вашому числовому відрізку = ${
+						sumUserNumbers * 5
+					} `
+				);
+			} else {
+				if (userSecondNumber > userFirstNumber && userFirstNumber > 0) {
+					if (userFirstNumber % 2 === 0) {
+						userFirstNumber++;
+					}
+					if (userSecondNumber % 2 === 0) {
+						userSecondNumber--;
+					}
+					if (
+						userFirstNumber !== userSecondNumber &&
+						userFirstNumber + 2 !== userSecondNumber
+					) {
+						for (let i = 1; i <= 5; i++) {
+							let randomNumber;
+							do {
+								randomNumber =
+									userFirstNumber +
+									Math.floor(
+										Math.random() *
+											(userSecondNumber -
+												userFirstNumber +
+												1)
+									);
+							} while (
+								randomNumber === userFirstNumber ||
+								randomNumber === userSecondNumber ||
+								randomNumber % 2 === 0
+							);
+							sumUserNumbers += randomNumber;
+							document.write(`${randomNumber} `);
+						}
+						document.write(
+							` — числа що були обрані, їх сума = ${sumUserNumbers} `
+						);
+					} else {
+						document.write(
+							"немає непарних чисел у відрізку між першим числом і другим"
+						);
+					}
+				} else {
+					alert("невірно введені дані");
+				}
+			}
+		</script>
+	</body>
+</html>

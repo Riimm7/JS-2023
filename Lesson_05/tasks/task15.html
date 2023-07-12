@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+				font-size: 18px;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+		</style>
+		<h1>Задача 15</h1>
+
+		<p>
+			Користувач поступово вводить показники температури протягом року.
+			Знайти середню температуру.
+		</p>
+		<script>
+			let sumTempValue = 0;
+			let tempCount = 0;
+			let tempValue = 0;
+			do {
+				tempValue = parseFloat(prompt("введіть показники температури"));
+				if (!isNaN(tempValue)) {
+					tempCount++;
+					document.write(
+						`<p>${tempCount} число = ${tempValue}°C</p>`
+					);
+					sumTempValue += tempValue;
+				}
+			} while (!isNaN(tempValue));
+			if (tempCount > 0)
+				document.write(
+					`<p>Cередня температура становить ${
+						Math.round((sumTempValue / tempCount) * 10) / 10
+					}°C</p>`
+				);
+			else document.write(`<p>Ви не ввели жодного числа</p>`);
+		</script>
+	</body>
+</html>

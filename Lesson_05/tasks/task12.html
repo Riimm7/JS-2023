@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+				font-size: 18px;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			input {
+				margin-bottom: 10px;
+			}
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+			img {
+				width: 200px;
+				height: 200px;
+				margin-bottom: 50px;
+			}
+			.win {
+				font-size: 50px;
+				background: linear-gradient(
+					to bottom,
+					#02ed2a,
+					#02f771,
+					#0de0a8,
+					#02f4f7,
+					#02aced
+				);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+			.lose {
+				font-size: 30px;
+				color: #333;
+			}
+		</style>
+		<h1>Задача 12</h1>
+
+		<p>
+			Ігровий автомат. Випадково вибираємо зображення у 3 позиціях. Вибір
+			у кожній позиції вибирається як одне з чотирьох зображень. Вивести
+			ці зображення і повідомити виграш користувача (три перших зображення
+			100 грн, три других – 200, три третіх – 500, три четвертих
+			зображення – 1000грн). Використати цикли і switch (для вибору
+			зображення за номером).
+		</p>
+		<script>
+			let winCount = "";
+			for (let i = 0; i < 3; i++) {
+				const randomImage = 1 + Math.floor(Math.random() * 4);
+				switch (randomImage) {
+					case 1:
+						document.write(
+							'<img src="/Lesson_05/img/apricot.png" alt="" />'
+						);
+						break;
+					case 2:
+						document.write(
+							'<img src="/Lesson_05/img/cherry.png" alt="" />'
+						);
+						break;
+					case 3:
+						document.write(
+							'<img src="/Lesson_05/img/banana.png" alt="" />'
+						);
+						break;
+					case 4:
+						document.write(
+							'<img src="/Lesson_05/img/grape.png" alt="" />'
+						);
+						break;
+				}
+				winCount += randomImage;
+			}
+			document.write("<br>");
+			switch (winCount) {
+				case "111":
+					document.write('<div class="win">ви виграли 100грн</div>');
+					break;
+				case "222":
+					document.write('<div class="win">ви виграли 200грн</div>');
+					break;
+				case "333":
+					document.write('<div class="win">ви виграли 300грн</div>');
+					break;
+				case "444":
+					document.write('<div class="win">ви виграли 400грн</div>');
+					break;
+				default:
+					document.write(
+						'<div class="lose">ви не виграли нічого</div>'
+					);
+					break;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+				font-size: 18px;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			input {
+				margin-bottom: 10px;
+			}
+			.container {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+			}
+		</style>
+		<h1>Задача 2</h1>
+
+		<p>Створити 10 елементів для введення цін продуктів</p>
+		<div class="container">
+			<script>
+				for (let i = 0; i < 10; i++) {
+					document.write("<input>");
+				}
+			</script>
+		</div>
+	</body>
+</html>

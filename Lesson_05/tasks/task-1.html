@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			div {
+				color: #4d4c4c;
+			}
+			p {
+				color: #666;
+			}
+			.month {
+				font-size: 18px;
+				margin-bottom: 10px;
+			}
+			.spring {
+				color: green;
+			}
+			.summer {
+				color: orange;
+			}
+		</style>
+		<h1>Задача -1</h1>
+
+		<p>Вивести на екран номери місяців весни і літа (від 3 до 8)</p>
+		<script>
+			//1.Вводимо необхідні дані
+			let monthSpring;
+			let monthSummer;
+
+			//2.знаходимо результат
+
+			for (monthSpring = 3; monthSpring <= 5; monthSpring++) {
+				document.write(
+					`<div class="month">${monthSpring} місяць - це <span class="spring">весна</span></div>`
+				);
+			}
+			for (monthSummer = 6; monthSummer <= 8; monthSummer++) {
+				document.write(
+					`<div class="month">${monthSummer} місяць - це <span class="summer">літо</span></div>`
+				);
+			}
+		</script>
+	</body>
+</html>

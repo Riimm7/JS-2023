@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+				font-size: 18px;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			.container {
+				display: flex;
+				justify-content: center;
+			}
+		</style>
+		<h1>Задача 1</h1>
+		<p>
+			Вивести з використанням циклів маркований список з випадковими
+			числами (1-100). Кількість випадкових чисел вводиться користувачем:
+			12, 21, 34, 51
+		</p>
+		<div class="container">
+			<ul>
+				<script>
+					let userCount = parseInt(
+						prompt(
+							"Введіть кількість випадкових чисел: 12,21,34,51"
+						)
+					);
+					switch (userCount) {
+						case 12:
+							for (let i = 0; i < userCount; i++) {
+								const randomNumber =
+									1 + Math.floor(Math.random() * 100);
+								document.write(`<li>${randomNumber}</li>`);
+							}
+							break;
+						case 21:
+							for (let i = 0; i < userCount; i++) {
+								const randomNumber =
+									1 + Math.floor(Math.random() * 100);
+								document.write(`<li>${randomNumber}</li>`);
+							}
+							break;
+						case 34:
+							for (let i = 0; i < userCount; i++) {
+								const randomNumber =
+									1 + Math.floor(Math.random() * 100);
+								document.write(`<li>${randomNumber}</li>`);
+							}
+							break;
+						case 51:
+							for (let i = 0; i < userCount; i++) {
+								const randomNumber =
+									1 + Math.floor(Math.random() * 100);
+								document.write(`<li>${randomNumber}</li>`);
+							}
+							break;
+						default:
+							document.write(`<p>Невірна кількість чисел</p>`);
+							break;
+					}
+				</script>
+			</ul>
+		</div>
+	</body>
+</html>

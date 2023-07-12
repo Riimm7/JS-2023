@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 13</h1>
+
+		<p>
+			Морський бій. Комп’ютер випадково розташовує одиночний корабель на
+			полі розміром N*M. Маючи К снарядів користувач намагається потопити
+			корабель.
+		</p>
+		<script>
+			// користувач вводит розміри поля
+			// обирає кількість снарядів
+			// компютер визначає число рандомно у межах від 1 до числа що задав юзер двічі і записує у змінну
+			// юзер вводить 2 числа, якщо вони співпадають то виграш, якщо ні то наступна спроба,до тих пір, доки не закінчаться спроби
+			let boardWidth = parseInt(prompt("введіть ширину поля"));
+			let boardHeight = parseInt(prompt("введіть висоту поля"));
+			let shotCount = parseInt(prompt("введіть кількість пострілів"));
+			const shipX = 1 + Math.floor(Math.random() * `${boardWidth}`);
+			const ShipY = 1 + Math.floor(Math.random() * `${boardHeight}`);
+			console.log(shipX, ShipY);
+			for (let i = 1; i <= shotCount; i++) {
+				let shotX = parseInt(
+					prompt("номер клітинки по горизонталі для пострілу")
+				);
+				let shotY = parseInt(
+					prompt("номер клітинки по вертикалі для пострілу")
+				);
+				if (shotX === shipX && shotY === ShipY) {
+					alert(`ви перемогли за ${i} постріли`);
+				} else {
+					alert(
+						`ви промахнулись у вас лишилось ${
+							shotCount - i
+						} пострілів`
+					);
+				}
+			}
+		</script>
+	</body>
+</html>

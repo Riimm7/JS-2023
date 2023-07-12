@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+				font-size: 18px;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			input {
+				margin-bottom: 10px;
+			}
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				color: #666;
+				max-width: 300px;
+				margin: 0 auto;
+			}
+			th,
+			td {
+				border: 2px solid #ddd;
+				padding: 8px;
+				text-align: center;
+			}
+			th {
+				background-color: #f2f2f2;
+			}
+		</style>
+		<h1>Задача 4</h1>
+
+		<p>Вивести таблицю з 3 рядків і 7 стовпців</p>
+		<table>
+			<script>
+				for (let i = 1; i <= 3; i++) {
+					for (let j = 1; j <= 7; j++) {
+						document.write(`<td>${j}</td>`);
+					}
+					document.write("</tr>");
+				}
+			</script>
+		</table>
+	</body>
+</html>

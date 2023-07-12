@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+				font-size: 18px;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+		</style>
+		<h1>Задача 16</h1>
+
+		<p>
+			Користувач поступово вводить прибуток магазину за кожен день
+			протягом N тижнів. Знайти загальну величину прибутку та вивести
+			величину прибутку протягом кожного окремого тижня.
+		</p>
+		<script>
+			// користувач вводить числа і вони рахуються до тих пір доки користувач не натисне відміна
+			// 1 цикл буде безстроковий, до відміни
+			// 2 цикл тривалістю 7ітерацій
+			let dailyProfit = 0;
+			let weekProfit = 0;
+			let totalProfit = 0;
+			let weekCount = 0;
+			do {
+				for (let i = 0; i < 7; i++) {
+					dailyProfit = parseFloat(
+						prompt("Введіть прибуток за день")
+					);
+					if (!isNaN(dailyProfit)) weekProfit += dailyProfit;
+					else break;
+				}
+				weekCount++;
+				document.write(
+					`<p>Сума прибутку за ${weekCount} тиждень = ${weekProfit}грн</p>`
+				);
+				totalProfit += weekProfit;
+				weekProfit = 0;
+			} while (!isNaN(dailyProfit));
+			document.write(
+				`<p>Сума прибутку за весь період = ${
+					totalProfit - weekProfit
+				}грн</p>`
+			);
+		</script>
+	</body>
+</html>

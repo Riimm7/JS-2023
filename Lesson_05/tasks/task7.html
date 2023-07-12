@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 7</h1>
+
+		<p>Вивести на екран N абзаців (N вводиться користувачем) за зразком</p>
+		<script>
+			//користувач вводить кількість абзаців у новий розділ
+			//виводити заголовок нового розділу
+			//вивести кількість параграфів яку ввів користувач
+			//вивести розділення розділу
+			//це повторювати до тих пір поки користувач не натисне відміна
+			let numberTitle = 1;
+			let userNumberParagraph;
+			do {
+				userNumberParagraph = parseInt(
+					prompt(
+						`яку кількість абзаців бажаєте додати у ${numberTitle} розділ`
+					)
+				);
+				if (!isNaN(userNumberParagraph)) {
+					document.write(`<h1>Заголовок ${numberTitle}</h1>`);
+					for (let i = 1; i <= userNumberParagraph; i++) {
+						document.write(
+							`<p>Розділ ${numberTitle}, параграф ${i}</p>`
+						);
+					}
+					document.write("<hr>");
+					numberTitle++;
+				}
+			} while (!isNaN(userNumberParagraph));
+		</script>
+	</body>
+</html>
