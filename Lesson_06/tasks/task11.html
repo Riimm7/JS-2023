@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 11</h1>
+
+		<p>
+			Вивести на екран усі двоцифрові числа, у яких перша цифра є більшою
+			або рівною за другу.
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+		</style>
+		<script>
+			for (let c1 = 1; c1 <= 9; c1++) {
+				for (let c2 = 0; c2 <= c1; c2++) {
+					document.write(`${c1}${c2}<br>`);
+				}
+			}
+		</script>
+	</body>
+</html>

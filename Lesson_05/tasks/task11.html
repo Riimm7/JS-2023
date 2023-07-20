@@ -35,7 +35,7 @@
 			Знайти суму 5 непарних чисел, що знаходяться між заданими
 			користувачем числами.
 		</p>
-		<script>
+		<!-- <script>
 			let userFirstNumber = parseInt(prompt("введіть перше число"));
 			let userSecondNumber = parseInt(prompt("введіть друге число"));
 			let sumUserNumbers = 0;
@@ -91,6 +91,23 @@
 					alert("невірно введені дані");
 				}
 			}
+		</script> -->
+		<script>
+			const minRangeNumber = parseInt(prompt("minRangeNumber"));
+			const maxRangeNumber = parseInt(prompt("maxRangeNumber"));
+			let sum = 0;
+			for (let i = 0; i < 5; ) {
+				const randomNumber =
+					minRangeNumber +
+					Math.floor(
+						Math.random() * (maxRangeNumber - minRangeNumber + 1)
+					);
+				if (randomNumber % 2 !== 0) {
+					sum += randomNumber;
+					i++;
+				}
+			}
+			document.write(`${sum}`);
 		</script>
 	</body>
 </html>
