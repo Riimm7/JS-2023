@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 6</h1>
+
+		<p>
+			Створити функцію, яка створює таблицю з вказаною кількістю рядків і
+			стовпців (таблиця заповнюється заданим фіксованим повідомленням).
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			table {
+				max-width: 1200px;
+				margin: 0 auto;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			th,
+			td {
+				cursor: pointer;
+				border: 1px solid #ddd;
+				padding: 8px;
+				text-align: center;
+			}
+			td:hover {
+				background-color: #ececec;
+			}
+
+			th {
+				background-color: #f2f2f2;
+			}
+		</style>
+		<script>
+			function table(countRows, countColumns) {
+				document.write("<table>");
+				for (let i = 1; i <= countRows; i++) {
+					document.write("<tr>");
+					for (let j = 1; j <= countColumns; j++) {
+						document.write("<td>");
+						document.write(`${i} рядок ${j} колонка`);
+						document.write("</td>");
+					}
+					document.write("</tr>");
+				}
+				document.write("</table>");
+			}
+
+			countRows = parseInt(prompt("кількість рядків"));
+			countColumns = parseInt(prompt("кількість колонок"));
+			table(countRows, countColumns);
+		</script>
+	</body>
+</html>

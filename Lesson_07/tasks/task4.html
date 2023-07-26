@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 4</h1>
+
+		<p>
+			Створити функцію, яка для 3 заданих чисел знаходить одночасно
+			декілька результатів: кількість парних, кількість додатних,
+			кількість більших за 100.
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+		</style>
+		<script>
+			let findNumberStats = (num1, num2, num3) => {
+				let evenCount = 0;
+				if (num1 % 2 === 0) evenCount++;
+				if (num2 % 2 === 0) evenCount++;
+				if (num3 % 2 === 0) evenCount++;
+
+				let positiveCount = 0;
+				if (num1 > 0) positiveCount++;
+				if (num2 > 0) positiveCount++;
+				if (num3 > 0) positiveCount++;
+
+				let numbersOver100Count = 0;
+				if (num1 > 100) numbersOver100Count++;
+				if (num2 > 100) numbersOver100Count++;
+				if (num3 > 100) numbersOver100Count++;
+
+				return [evenCount, positiveCount, numbersOver100Count];
+			};
+
+			let num1 = parseInt(prompt("введіть число 1"));
+			let num2 = parseInt(prompt("введіть число 2"));
+			let num3 = parseInt(prompt("введіть число 3"));
+
+			let result = findNumberStats(num1, num2, num3);
+
+			document.write(
+				`кількість парних = ${result[0]} <br>кількість додатних = ${result[1]}<br>кількість більших за 100 = ${result[2]}`
+			);
+		</script>
+	</body>
+</html>

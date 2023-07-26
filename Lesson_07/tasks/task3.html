@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 3</h1>
+
+		<p>
+			Створити окремі функції, які для 4 чисел знаходять: 1)суму;
+			2)добуток; 3)середнє арифметичне; 4)мінімальне значення.
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+		</style>
+		<script>
+			let getSum = () => num1 + num2 + num3 + num4;
+			let getProduct = () => num1 * num2 * num3 * num4;
+			let getAverage = () => num1 + num2 + num3 + num4 / 4;
+			let getMinNumber = () => Math.min(num1, num2, num3, num4);
+
+			let num1 = parseInt(prompt("введіть число 1"));
+			let num2 = parseInt(prompt("введіть число 2"));
+			let num3 = parseInt(prompt("введіть число 3"));
+			let num4 = parseInt(prompt("введіть число 4"));
+
+			document.write(`сума = ${getSum()}<br>`);
+			document.write(`добуток = ${getProduct()}<br>`);
+			document.write(`середнє значення = ${getAverage()}<br>`);
+			document.write(`мінімальне число = ${getMinNumber()}`);
+		</script>
+	</body>
+</html>

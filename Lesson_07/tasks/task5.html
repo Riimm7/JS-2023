@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 5</h1>
+
+		<p>Створити окремі функції, які переводять:
+			<ol>
+				<li>Сантиметри у дюйми;</li>
+				<li>Кілограми у фунти;</li>
+				<li>Кілометри у милі.</li>
+			</ol>
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			ol{
+				list-style: none;
+			}
+		</style>
+		<script>
+			let convertCentimetersToInches = (userCentimeters) => userCentimeters*0.39370
+			let convertKilogramsToPounds =(userKilograms) => userKilograms*2.2046
+			let convertKilometersToMiles =(userKilometers) => userKilometers*0.62137
+
+			let userCentimeters = parseFloat(prompt('введіть сантиметри'))
+			let userKilograms = parseFloat(prompt('введіть кілограми'))
+			let userKilometers = parseFloat(prompt('введіть кілометри'))
+
+			document.write(`${userCentimeters} см = ${convertCentimetersToInches(userCentimeters).toFixed(2)} дюймів<br>`)
+			document.write(`${userKilograms} кг = ${convertKilogramsToPounds(userKilograms).toFixed(2)} фунтів<br>`)
+			document.write(`${userKilometers} км = ${convertKilometersToMiles(userKilometers).toFixed(2)} миль`)
+		</script>
+	</body>
+</html>
