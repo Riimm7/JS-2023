@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 9</h1>
+
+		<p>
+			Морський бій. Користувач вводить кількість клітинок одновимірного
+			масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує
+			ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0,
+			то клітинка пуста, якщо 1 – то це означає, що там є корабель.
+			Користувач вводить номер клітинки, куди стріляє. Гра продовжується
+			до тих пір, поки не будуть потоплені усі кораблі.
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			// буде лічильник кораблів що розміщені, якщо користувач попав -- на лічильнику, якщо на лічильнику 0 то гра завершена, всі кораблі потоплено
+
+			//функція визначення рандомного числа у заданих параметрах
+
+			function getRandomNumber(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			//функція для створення порожнього поля для гри
+
+			function fullZeroArray(nameArray) {
+				for (let i = 0; i < userField; i++) {
+					nameArray.push(0);
+				}
+				return nameArray;
+			}
+
+			//функція заповнення поля для гри кораблями
+
+			function battlefieldArray(userField, userShip) {
+				if ((userField + 1) / 2 === userShip) {
+					for (let i = 0; i < userField; i += 2) {
+						gameField[i] = 1;
+					}
+				} else if (userField / 2 === userShip) {
+					let startShip = getRandomNumber(0, 1);
+					for (let i = startShip; i < userField; i += 2) {
+						gameField[i] = 1;
+					}
+				} else {
+					if (getRandomNumber(0, 1) === 1) {
+						gameField[0] = 1;
+						userShip--;
+					}
+					if (getRandomNumber(0, 1) === 1) {
+						gameField[userField - 1] = 1;
+						userShip--;
+					}
+				}
+
+				while (userShip !== 0) {
+					let shipLocation = getRandomNumber(0, userField - 1);
+					if (
+						gameField[shipLocation - 1] === 0 &&
+						gameField[shipLocation + 1] === 0 &&
+						gameField[shipLocation] !== 1
+					) {
+						gameField[shipLocation] = 1;
+						userShip--;
+					}
+				}
+			}
+
+			gameField = [];
+			let userField = parseInt(prompt(`Оберіть кількість клітинок поля`));
+			let userShip = parseInt(
+				prompt(`Оберіть кількість однопалубних кораблів`)
+			);
+			let userShipLocation = userShip;
+			if (userShip - 1 <= userField / 2 && userShip > 0) {
+				fullZeroArray(gameField);
+				battlefieldArray(userField, userShip);
+				console.log(gameField);
+
+				while (userShipLocation !== 0) {
+					let userShot = parseInt(
+						prompt(
+							`оберіть місце куди стріляти, в межах від 1 до ${gameField.length}`
+						)
+					);
+					if (isNaN(userShot)) {
+						// alert("введіть коректне число");
+						break;
+					}
+					if (gameField[userShot - 1] === 1) {
+						userShipLocation--;
+						alert(
+							`ви влучили, лишилось кораблів - ${userShipLocation}`
+						);
+						gameField[userShot - 1] = 2;
+					} else if (gameField[userShot - 1] === 0) {
+						alert(
+							`промах, лишилось кораблів - ${userShipLocation}`
+						);
+					} else {
+						alert(
+							`тут вже потоплений корабель, лишилось кораблів - ${userShipLocation}`
+						);
+					}
+				}
+			} else {
+				alert("невірно вказані умови гри, розпочніть спочатку");
+			}
+		</script>
+	</body>
+</html>

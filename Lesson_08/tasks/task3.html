@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 3</h1>
+
+		<p>
+			Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я
+			«Іван».
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			//функція заповнення масиву
+
+			function nameChildrensPush() {
+				while (true) {
+					let name = prompt("Введіть ім'я учня");
+					if (name === null) {
+						break;
+					}
+					nameChildrens.push(name);
+				}
+			}
+
+			//функція пошуку кількості імені у масиві
+
+			function getCountName(name, array) {
+				let nameCount = 0;
+				for (let i = 0; i < array.length; i++) {
+					if (array[i].toLowerCase() === name.toLowerCase())
+						nameCount++;
+				}
+				return nameCount;
+			}
+
+			let nameChildrens = [];
+			nameChildrensPush();
+			let nameChild = prompt("Введіть Імя для пошуку кількості");
+			document.write(`ви ввели такі імена: ${nameChildrens}<br>`);
+			document.write(
+				`кількість дітей з іменем ${nameChild} = ${getCountName(
+					nameChild,
+					nameChildrens
+				)}`
+			);
+		</script>
+	</body>
+</html>

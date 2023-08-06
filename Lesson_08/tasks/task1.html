@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 1</h1>
+
+		<p>
+			Дано масив, який містить оцінки з К предметів. Знайти середній бал і
+			з’ясувати до якої категорії він відноситься (відмінник, двійочник
+			(має хоча би одну двійку), хорошист (оцінки добре і відмінно),
+			трійочник(є хоча би одна трійка)).
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			//функція заповнення масиву з оцінками
+
+			function gradesArrayPush() {
+				for (let i = 1; i <= numOfLessons; i++) {
+					gradesArray.push(
+						parseInt(prompt(`оцінка за ${i} предмет`))
+					);
+				}
+			}
+
+			//функція для визначення середнього балу
+
+			function getAverageScore() {
+				let sumGrades = 0;
+				for (let i = 0; i < gradesArray.length; i++) {
+					sumGrades += gradesArray[i];
+				}
+				return Math.round(sumGrades / gradesArray.length);
+			}
+
+			//функція для пошуку цифри в масиві
+
+			function isNumberInArray(number, array) {
+				let result;
+				for (let i = 0; i < array.length; i++) {
+					if (array[i] === number) {
+						result = true;
+						break;
+					} else result = false;
+				}
+				return result;
+			}
+
+			//функція визначення категорії учня
+
+			function getStudentCategory() {
+				let averageScore = Math.round(getAverageScore());
+				let result;
+
+				if (
+					isNumberInArray(1, gradesArray) ||
+					isNumberInArray(2, gradesArray)
+				)
+					result = "двійочник";
+				else if (isNumberInArray(3, gradesArray)) result = "трійочник";
+				else if (averageScore === 4) result = "хорошист";
+				else result = "відмінник";
+				return result;
+			}
+
+			//оголошення змінних
+
+			let numOfLessons = parseInt(prompt("Кількість предметів"));
+			let gradesArray = [];
+
+			//знаходимо та виводимо результат
+
+			gradesArrayPush();
+			document.write(`Середній бал = ${getAverageScore()} <br>`);
+			document.write(`Учень - ${getStudentCategory()}`);
+		</script>
+	</body>
+</html>

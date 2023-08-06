@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 2</h1>
+
+		<p>Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+			<ol>
+				<li>номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
+				<li>номери днів, коли кількість відвідувачів була мінімальною;</li>
+				<li>номери днів, коли кількість відвідувачів була максимальною;</li>
+				<li>загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.</li>
+			</ol></p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			ol{
+				list-style: none;
+			}
+		</style>
+		<script>
+			//функція заповнення масиву 
+			let storeVisitors = []
+
+			function storeVisitorsPush() {
+				for (let i = 1; i <= 7; i++) {
+					storeVisitors.push(parseInt(prompt(`кількість відвідувачів за ${i} день у тижні`)))					
+				}
+			}
+			storeVisitorsPush()
+
+			//функція що знаходить дні менше 20 відвідувачів
+
+			function daysWithLessThan20Visitors() {
+				let lessThan20Visitors = []
+				for (let i = 0; i < storeVisitors.length; i++) {
+					if (storeVisitors[i]<20) lessThan20Visitors.push(i+1) 
+				}
+				return lessThan20Visitors
+			}
+
+			//функція що знаходить 2 мінімальних числа та повертає номер у масиві
+
+			function findTwoMinIndexes() {
+			let min1 = Infinity;
+			let min2 = Infinity;
+			let minDay1, minDay2
+			for (let i = 0; i < storeVisitors.length; i++) {
+				if(storeVisitors[i]<min1){
+					min2 = min1
+					min1 = storeVisitors[i]
+					minDay2 = minDay1
+					minDay1 = i+1
+					}
+				else if (storeVisitors[i]<min2){
+					min2 = storeVisitors[i]
+					minDay2 = i+1
+					}
+				}
+				return [minDay1, minDay2]
+			}
+			
+			//функція що знаходить 2 максимальних числа та повертає номер у масиві
+
+			function findTwoMaxIndexes() {
+			let max1 = -Infinity;
+			let max2 = -Infinity;
+			let maxDay1, maxDay2
+			for (let i = 0; i < storeVisitors.length; i++) {
+				if(storeVisitors[i]>max1){
+					max2 = max1
+					max1 = storeVisitors[i]
+					maxDay2 = maxDay1
+					maxDay1 = i+1
+					}
+				else if (storeVisitors[i]>max2){
+					max2 = storeVisitors[i]
+					maxDay2 = i+1
+					}
+				}
+				return [maxDay1, maxDay2]
+			}
+			
+			//функція що знаходить суму відвідувачів у вказані дні
+			function visitorsInSpecifiedDays(dayStart, dayEnd) {
+				let sumVisitors =0
+				for (let i = dayStart-1; i < dayEnd; i++) {
+					sumVisitors += storeVisitors[i]
+				}
+				return sumVisitors
+			}
+
+			document.write(`дні коли було менше 20 відвідувачів - ${daysWithLessThan20Visitors()}<br>`)
+			document.write(`номери днів, коли кількість відвідувачів була мінімальною - ${findTwoMinIndexes()}<br>`)
+			document.write(`номери днів, коли кількість відвідувачів була максимальною - ${findTwoMaxIndexes()}<br>`)
+			document.write(`загальна кількість клієнтів у будні = ${visitorsInSpecifiedDays(1,5)}<br>`)
+			document.write(`загальна кількість клієнтів на вихідних - ${visitorsInSpecifiedDays(6,7)}`)
+		</script>
+	</body>
+</html>

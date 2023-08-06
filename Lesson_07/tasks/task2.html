@@ -30,8 +30,8 @@
 			//користувачем вводиться номер дня
 			//якщо число від 1 до 5 то робочий, 6-7 вихідний
 			let dayOfMonth = parseInt(prompt("введіть число"));
-			let result;
 			function checkWorkDay(dayOfMonth) {
+				let result;
 				if (dayOfMonth <= 31 && dayOfMonth > 0) {
 					let numDay = dayOfMonth % 7;
 					switch (numDay) {

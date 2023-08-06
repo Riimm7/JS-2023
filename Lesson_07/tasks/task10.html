@@ -26,31 +26,41 @@
 				color: #666;
 			}
 		</style>
+		<!-- урок 8 розвязання -->
 		<script>
-			function averagePositiveTemperature() {
+			// function averagePositiveTemperature() {
+			// 	let sumTempValue = 0;
+			// 	let tempCount = 0;
+			// 	for (let i = 0; i < arguments.length; i++) {
+			// 		if (arguments[i] > 0) {
+			// 			sumTempValue += arguments[i];
+			// 			tempCount++;
+			// 		}
+			// 	}
+			// 	return sumTempValue / tempCount;
+			// }
+
+			function averagePositiveTemperature(...temperaturesList) {
 				let sumTempValue = 0;
 				let tempCount = 0;
-				do {
-					let tempValue = parseFloat(
-						prompt("Введіть показники температури")
-					);
-
-					if (!isNaN(tempValue)) {
-						if (tempValue > 0) {
-							sumTempValue += tempValue;
-							tempCount++;
-						}
-					} else {
-						break;
+				for (let i = 0; i < temperaturesList.length; i++) {
+					if (temperaturesList[i] > 0) {
+						sumTempValue += temperaturesList[i];
+						tempCount++;
 					}
-				} while (true);
-
+				}
 				return sumTempValue / tempCount;
 			}
 
+			let temperature = averagePositiveTemperature(довільна кількість агрументів);
+
 			document.write(
-				`середнє значення для додатних показів температури = ${averagePositiveTemperature()}`
+				`середнє значення для додатних показів температури = ${temperature}`
 			);
+
+			// document.write(
+			// 	`середнє значення для додатних показів температури = ${averagePositiveTemperature(довільна кількість агрументів)}`
+			// );
 		</script>
 	</body>
 </html>

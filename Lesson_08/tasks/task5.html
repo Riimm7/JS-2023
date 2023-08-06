@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 5</h1>
+
+		<p>
+			Дано послідовність оцінок учня. Підрахувати кількість:
+			<ol>
+				<li>двійок</li>
+				<li>кількість хороших оцінок (добре, відмінно);</li>
+				<li>кількість оцінок, які нижче середнього.</li>
+			</ol>
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			ol{
+				list-style: none;
+			}
+		</style>
+		<script>
+
+			//функція заповнення масиву з оцінками
+			function gradesArrayPush() {
+				while (true) {
+					let grade = prompt("оцінка за предмет");
+					if (grade === null) {
+						break;
+					}
+					grade = parseInt(grade);
+					gradesArray.push(grade);
+				}
+			}
+
+			//функція для пошуку цифри в масиві
+
+			function countNumberGrade(number,array) {
+				let result = 0
+				for (let i = 0; i < array.length; i++) {
+					if (array[i] === number)  {
+					result++
+					}
+				}
+				return result
+			}
+
+			let gradesArray = []
+			
+			gradesArrayPush()
+			document.write(`Кількість двійок = ${countNumberGrade(2,gradesArray)} <br>`)
+			document.write(`Кількість хороших оцінок = ${(countNumberGrade(4,gradesArray)+countNumberGrade(5,gradesArray))} <br>`)
+			document.write(`Кількість нижче середнього (1,2) = ${(countNumberGrade(1,gradesArray)+countNumberGrade(2,gradesArray))}`)
+		</script>
+	</body>
+</html>

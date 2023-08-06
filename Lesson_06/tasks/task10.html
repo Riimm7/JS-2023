@@ -38,10 +38,11 @@
 		</style>
 		<script>
 			for (let i = 1; i <= 6; i++) {
-				for (let j = 1; j <= Math.pow(i, 2); j++) {
-					document.write(j)
-				}
-				document.write("<br>")
+				const iSquared = Math.pow(i, 2);
+					for (let j = 1; j <= iSquared; j++) {
+						document.write(j);
+					}
+					document.write("<br>");
 			}
 		</script>
 	</body>

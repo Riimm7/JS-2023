@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 7</h1>
+
+		<p>
+			Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+			<ol>
+				<li>за весь рік;</li>
+				<li>у першій половині року;</li>
+				<li>у другій половині року;</li>
+				<li>за літо;</li>
+				<li>за ІІ квартал;</li>
+				<li>за парні місяці (з парними номерами);</li>
+				<li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+			</ol>
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			ol{
+				list-style: none;
+			}
+		</style>
+		<script>
+			//функція заповнення масиву
+			function utilitiesArrayPush() {
+				while (true) {
+					let utility = prompt("оцінка за предмет");
+					if (utility === null) {
+						break;
+					}
+					utility = parseInt(utility);
+					utilitiesArray.push(utility);
+				}
+			}
+
+			//функція знаходження суми в заданому проміжку та заданим інкрементом
+
+			function getSumUtilities(array, firstNum, lastNum, increment = 1) {
+				let sumUtilities = 0;
+				for (let i = firstNum - 1; i < lastNum; i += increment) {
+					sumUtilities += array[i];
+				}
+				return sumUtilities;
+			}
+
+			let utilitiesArray = [1,2,3,4,5,6,7,8,9,10,11,12]
+			// utilitiesArrayPush()
+			document.write(`сумарна кількість грошей за:<br>`)
+			document.write(`весь рік = ${getSumUtilities(utilitiesArray, 1, 12)}<br>`)
+			document.write(`першу половину = ${getSumUtilities(utilitiesArray, 1, 6)}<br>`)
+			document.write(`другу половину = ${getSumUtilities(utilitiesArray, 7, 12)}<br>`)
+			document.write(`літо = ${getSumUtilities(utilitiesArray, 6, 8)}<br>`)
+			document.write(`ІІ квартал = ${getSumUtilities(utilitiesArray, 4, 6)}<br>`)
+			document.write(`парні місяці = ${getSumUtilities(utilitiesArray, 2, 12, 2)}<br>`)
+			document.write(`перший місяць пори року = ${getSumUtilities(utilitiesArray, 3, 12, 3)}`)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 8</h1>
+
+		<p>
+			Дано одновимірний масив, у якому зберігається певна виграшна сума
+			(елементи заповнюються випадковим чином значеннями від -500 до 500).
+			Надаючи користувачу можливість вибирати номери елементів (поки він
+			не відмовиться). Знаходити сумарний виграш.
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			//рандомна кількість в масиві, заповнюється рандомними числами від -500 до 500, якщо користувач відкрив комірку, показати число що було, та вказати його виграш, або програш, якшо користувач натисне відміна то гру завершено, якщо відкрив комірку то значення змінюється на 0
+
+			//функція визначення рандомного числа у заданих параметрах
+
+			function getRandomNumber(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+
+			// створення ігрового масиву
+
+			const lengthArray = getRandomNumber(1, 20);
+			let gameArray = [];
+			for (let i = 0; i < lengthArray; i++) {
+				gameArray.push(getRandomNumber(-500, 500));
+			}
+			console.log(gameArray);
+
+			let userScore = 0;
+			while (true) {
+				let userChoice = parseInt(
+					prompt(`Оберіть число від 0 до ${lengthArray - 1}`)
+				);
+				if (
+					isNaN(userChoice) ||
+					userChoice < 0 ||
+					userChoice >= lengthArray
+				) {
+					alert(
+						`Введіть число в діапазоні від 0 до ${lengthArray - 1}`
+					);
+					continue;
+				}
+
+				userScore += gameArray[userChoice];
+				let continueGame = confirm(
+					`Ваш виграш склав ${gameArray[userChoice]}. Ви маєте на рахунку ${userScore}. Бажаєте продовжити гру?`
+				);
+				gameArray[userChoice] = 0;
+
+				if (!continueGame) {
+					alert(`Ваш виграш склав ${userScore}`);
+					break;
+				}
+			}
+		</script>
+	</body>
+</html>
