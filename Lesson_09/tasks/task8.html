@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 8</h1>
+
+		<p>
+			Дано масив номерів авто. Сформувати новий масив тих, які починаються
+			на «А»
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			let arr = ["A123", "B324", "a234", "c543", "5000", "A1234"];
+			let newArr = [];
+			arr.forEach((item, index, array) => {
+				if (item.charAt(0) === "A") newArr.push(array[index]);
+			});
+
+			console.log(newArr);
+		</script>
+	</body>
+</html>
