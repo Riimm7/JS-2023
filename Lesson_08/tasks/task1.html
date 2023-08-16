@@ -31,7 +31,7 @@
 				list-style: none;
 			} */
 		</style>
-		<script>
+		<!-- <script>
 			//функція заповнення масиву з оцінками
 
 			function gradesArrayPush() {
@@ -92,6 +92,44 @@
 			gradesArrayPush();
 			document.write(`Середній бал = ${getAverageScore()} <br>`);
 			document.write(`Учень - ${getStudentCategory()}`);
+		</script> -->
+		<script>
+			function getMinValue(arr) {
+				let min = arr[0];
+				for (let i = 1; i < arr.length; i++) {
+					//Як змінюються номери елементів
+					if (arr[i] < min)
+						//Що треба зробити з кожним із елементів
+						min = arr[i];
+				}
+				return min;
+			}
+			// function getMinValue(arr) {
+			//   return Math.min(...arr)
+			// }
+			//функція для знаходження категорії студента
+			function getStudentCategory(scores) {
+				let category;
+				switch (getMinValue(scores)) {
+					case 1:
+					case 2:
+						category = "двійочник";
+						break;
+					case 3:
+						category = "трійочник";
+						break;
+					case 4:
+						category = "хорошист";
+						break;
+					case 5:
+						category = "відмінник";
+						break;
+					default:
+						throw new Error("Некоректна оцінка");
+						break;
+				}
+				return category;
+			}
 		</script>
 	</body>
 </html>

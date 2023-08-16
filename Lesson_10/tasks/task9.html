@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 9</h1>
+
+		<p>Підрахувати суму цін, що більше за 1000</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			let num = [];
+			let numForTheYear = 12;
+			let min = 1;
+			let max = 10000;
+			for (let i = 0; i < numForTheYear; i++) {
+				const randomNum = min + Math.floor(Math.random() * max);
+				num.push(randomNum);
+			}
+			console.log(num);
+
+			let productPriceOver1000 = num.reduce(
+				(startValue, el, i, arr) =>
+					el > 1000 ? startValue + el : startValue,
+				0
+			);
+			console.log(productPriceOver1000);
+		</script>
+	</body>
+</html>
