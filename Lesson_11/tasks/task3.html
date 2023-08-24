@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 3</h1>
+
+		<p>
+			Морський бій. Випадковим чином на двовимірному полі розміром 6*6
+			розташовується 5 кораблів. Користувач стріляє вказуючи координати.
+			Гра продовжується поки не потоплено усі кораблі або у користувача не
+			закінчаться снаряди.
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			//функція для створення поля
+			function getGameField(num) {
+				let fieldArray = [];
+				for (let i = 0; i < num; i++) {
+					let fieldRow = new Array(num);
+					fieldRow.fill(0);
+					fieldArray.push(fieldRow);
+				}
+				return fieldArray;
+			}
+
+			//функція знаходження рандомного числа
+			function randomNum(min, max) {
+				return Math.floor(Math.random() * (max - min + 1)) + min;
+			}
+			// console.log(randomNum(0, 5));
+
+			//фукціія для розміщення кораблів
+			function battlefieldArray(array) {
+				let lengthArray = array.length;
+				console.log(lengthArray);
+				for (let i = 0; i < 5; ) {
+					let rowIndex = randomNum(0, lengthArray - 1);
+					let columnIndex = randomNum(0, lengthArray - 1);
+					if (array[rowIndex][columnIndex] !== 1) {
+						array[rowIndex][columnIndex] = 1;
+						i++;
+					}
+				}
+			}
+
+			let gameField = getGameField(6);
+			// console.log(gameField);
+			battlefieldArray(gameField);
+			console.log(gameField);
+			let shotCount = parseInt(prompt("введіть кількість пострілів"));
+			let shipCount = 5;
+			do {
+				let shotX = parseInt(prompt("введіть координату X"));
+				let shotY = parseInt(prompt("введіть координату Y"));
+				if (gameField[shotY - 1][shotX - 1] === 1) {
+					shotCount--;
+					shipCount--;
+					alert(`ви влучили, ще є ${shotCount}пострілів`);
+					gameField[shotY - 1][shotX - 1] = 2;
+				} else if (gameField[shotY - 1][shotX - 1] === 2) {
+					shotCount--;
+					alert(
+						`корабель вже потоплений, ще є ${shotCount}пострілів`
+					);
+				} else {
+					shotCount--;
+					alert(`промах, ще є ${shotCount}пострілів`);
+				}
+			} while (shotCount !== 0 && shipCount !== 0);
+		</script>
+	</body>
+</html>

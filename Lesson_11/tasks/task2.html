@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 2</h1>
+
+		<p>
+			Дано інформацію про прибуток К магазинів протягом тижня. Знайти :
+			<ol>
+				<li class="hw">
+					відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+				</li>
+				<li class="hw">відсортувати кожен тиждень за зростанням</li>
+				<li class="hw">максимальний прибуток за середу</li>
+				<li class="hw">
+					загальний прибуток усіх магазинів по дням (загальний прибуток
+					усіх магазинів за понеділок, за вівторок, і т.д.);
+				</li>
+				<li class="hw">
+					сформувати загальний список (одновимірний масив) зі значеннями,
+					що більші за 200
+				</li>
+				<li>загальний прибуток кожного масиву за тиждень;</li>
+				<li>загальний прибуток за робочі дні</li>
+				<li>загальний прибуток за вихідні дні</li>
+				<li>
+					упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+				</li>
+			</ol>
+		</p>
+
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			ol {
+				list-style: none;
+			}
+			.hw {
+				background-color: #dddddd;
+			}
+		</style>
+		<script>
+			function getRandomIncome (minValue, maxValue) {
+				return minValue + Math.floor(Math.random()* (maxValue - minValue + 1))
+			}
+
+			function generateWeekIncome (minValue, maxValue) {
+				const arr = []
+				for (let i = 0; i < 7; i++) {
+					const randomNumber = getRandomIncome(minValue, maxValue)
+					arr.push(randomNumber)
+				}
+				return arr
+			}
+
+			function generateTotalIncome(rowsNumber, minValue, maxValue){
+				const table = []
+				for (let i = 0; i < rowsNumber; i++) {
+					const randomRow = generateWeekIncome(minValue, maxValue)
+					table.push(randomRow)
+				}
+				return table
+			}
+			
+			//створення масиву з прибутком 4 магазинів щодня протягом тижня
+			let generalIncome = generateTotalIncome(6,0,1000)
+
+			console.log(generalIncome);
+
+			// відсортувати тижні (рядки) за спаданням максимального елементи у цьому тижні (рядку), тобто при порівнянні рядків потрібно порівнювати максимальні елементи у кожному з цих рядків
+			function getSortedWeeksByMaxElement(array) {
+				let newArrayForSort = JSON.parse(JSON.stringify(array))
+				console.log(newArrayForSort);
+				let newArrayTemp = []
+				for (let i = 0; i < newArrayForSort.length; i++) {
+					let maxNum = 0
+					for (let j = 0; j < newArrayForSort[i].length; j++) {
+						if (newArrayForSort[i][j]>maxNum) maxNum = newArrayForSort[i][j]
+					}
+					newArrayTemp.push(maxNum)
+				}
+				console.log(newArrayTemp);
+				for (let k = 0; k < newArrayTemp.length; k++) {
+					if (newArrayTemp[k+1]>newArrayTemp[k]) {
+						let newTemp = newArrayForSort[k]
+						newArrayForSort[k] = newArrayForSort[k+1]
+						newArrayForSort[k+1] = newTemp
+					}
+				}
+				return newArrayForSort
+			}
+			console.log(getSortedWeeksByMaxElement(generalIncome));
+
+			//сортувати кожен тиждень за зростанням
+			// console.log(generalIncome);
+			let newArrayForSort = JSON.parse(JSON.stringify(generalIncome))
+			let sortIncome = newArrayForSort.map((item) => item.sort((el1, el2) => el1 - el2))
+			console.log(sortIncome);
+			
+			//максимальний прибуток за середу
+			function getMaxIncomeDay(dayNum, array) {
+				let maxIncomeDay = 0
+				for (let shop = 0; shop < array.length; shop++) {
+					for (let day = dayNum-1; day < dayNum; day++) {
+						if (array[shop][day] > maxIncomeDay) {
+							maxIncomeDay = array[shop][day]
+						}
+					}
+				}
+				return maxIncomeDay
+			}
+			
+			//прибуток магазинів за 1 день
+			function getIncomeDay(dayNum, array) {
+				let incomeDay = array.map((item) => item[dayNum-1])
+				return incomeDay
+			}
+
+			//сформувати одновимірний масив зі значеннями, що більші за 200
+			let arrMoreThan200 = generalIncome.flat().filter(el => el>200)
+
+			console.log(arrMoreThan200);
+
+			//створення масиву з прибутком магазинів за тиждень
+			let totalWeekCash = generalIncome.map(item =>
+				item.reduce((prevValue, el) => prevValue + el, 0)
+			);
+
+			console.log(totalWeekCash);
+
+			console.log(getIncomeDay(1, generalIncome));
+
+			//загальний прибуток за робочі дні
+			function getIncomeWorksDay(array) {
+				let incomeWorksDay = 0
+				for (let shop = 0; shop < array.length; shop++) {
+					for (let day = 0; day < 5; day++) {
+						incomeWorksDay += array[shop][day]
+					}
+				}
+				return incomeWorksDay
+			}
+			
+			console.log(getIncomeWorksDay(generalIncome));
+			
+			//загальний прибуток за вихідні дні
+			function getIncomeWeekendDay(array) {
+				let incomeWeekendDay = 0
+				for (let shop = 0; shop < array.length; shop++) {
+					for (let day = 5; day < array[shop].length; day++) {
+						incomeWeekendDay += array[shop][day]
+					}
+				}
+				return incomeWeekendDay
+			}
+			
+			console.log(getIncomeWeekendDay(generalIncome));
+
+			console.log(getMaxIncomeDay(3, generalIncome));
+
+			//упорядкувати тижні (рядки) за спаданням суми елементів у рядку (тобто при порівнянні двох рядків треба знайти суму кожного з
+			// рядків і порівнювати ці суми, на основі цих сум буде зрозуміло, який з елементів повинен іти раніше).
+
+			function getSortedWeeksBySumElement(array) {
+				let newArrayForSort = JSON.parse(JSON.stringify(array))
+				console.log(newArrayForSort);
+				let newArrayTemp = []
+				for (let i = 0; i < newArrayForSort.length; i++) {
+					let sum = 0
+					for (let j = 0; j < newArrayForSort[i].length; j++) {
+						sum += newArrayForSort[i][j]
+					}
+					newArrayTemp.push(sum)
+				}
+				console.log(newArrayTemp);
+				for (let k = 0; k < newArrayTemp.length; k++) {
+					if (newArrayTemp[k+1]>newArrayTemp[k]) {
+						let newTemp = newArrayForSort[k]
+						newArrayForSort[k] = newArrayForSort[k+1]
+						newArrayForSort[k+1] = newTemp
+					}
+				}
+				return newArrayForSort
+			}
+			console.log(getSortedWeeksBySumElement(generalIncome));
+		</script>
+	</body>
+</html>

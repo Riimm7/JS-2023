@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<h1>Задача 1</h1>
+
+		<p>
+			Знайти суми елементів у вказаній області (масиви розділені на 4 рівні частини -  не звертаємо увагу на криві малюнки ☺ )
+			<ol>
+				<li>в першій чверті</li>
+				<li>в другій чверті</li>
+				<li>в третій чверті</li>
+				<li>в четвертій чверті</li>
+				<li>Суму парних рядків</li>
+				<li>Суму непарних стовпців</li>
+				<li>У парних рядках – непарні стовпці</li>
+				<li>у непарних – парні</li>
+			</ol>
+			</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			ol {
+				list-style: none;
+			}
+		</style>
+		<script>
+
+			function getRandomNumber (minValue, maxValue) {
+				return minValue + Math.floor(Math.random()* (maxValue - minValue + 1))
+			}
+
+			function generateRandomArray (arrayLength, minValue, maxValue) {
+				const arr = []
+				for (let i = 0; i < arrayLength; i++) {
+					const randomNumber = getRandomNumber(minValue, maxValue)
+					arr.push(randomNumber)
+				}
+				return arr
+			}
+
+			function generateRandomTable(rowsNumber, columnsNumber, minValue, maxValue){
+				const table = []
+				for (let i = 0; i < rowsNumber; i++) {
+					const randomRow = generateRandomArray(columnsNumber, minValue, maxValue)
+					table.push(randomRow)
+				}
+				return table
+			}
+
+			let table = generateRandomTable(4,4,1,10)
+			console.log(table);
+
+			function getSumFIrstQuarter(array) {
+				let sum = 0
+				for (let row = 0; row < array.length/2; row++) {
+					for (let col = 0; col < array[row].length/2; col++) {
+						sum += array[row][col]
+					}
+				}
+				return sum
+			}
+
+			console.log(getSumFIrstQuarter(table));
+
+			function getSumSecondQuarter(array) {
+				let sum = 0
+				for (let row = 0; row < array.length/2; row++) {
+					for (let col = array[row].length/2; col < array[row].length; col++) {
+						sum += array[row][col]
+					}
+				}
+				return sum
+			}
+
+			console.log(getSumSecondQuarter(table));
+
+			function getSumThirdQuarter(array) {
+				let sum = 0
+				for (let row = array.length/2; row < array.length; row++) {
+					for (let col = 0; col < array[row].length/2; col++) {
+						sum += array[row][col]
+					}
+				}
+				return sum
+			}
+
+			console.log(getSumThirdQuarter(table));
+
+			function getSumLastQuarter(array) {
+				let sum = 0
+				for (let row = array.length/2; row < array.length; row++) {
+					for (let col = array[row].length/2; col < array[row].length; col++) {
+						sum += array[row][col]
+					}
+				}
+				return sum
+			}
+
+			console.log(getSumLastQuarter(table));
+
+			function getSumEvenRow(array) {
+				let sum = 0
+				for (let row = 1; row < array.length; row+=2) {
+					for (let col = 0; col < array[row].length; col++) {
+						sum += array[row][col]
+					}
+				}
+				return sum
+			}
+
+			console.log(getSumEvenRow(table));
+
+			function getSumOddColumn(array) {
+				let sum = 0
+				for (let row = 0; row < array.length; row++) {
+					for (let col = 0; col < array[row].length; col+=2) {
+						sum += array[row][col]
+					}
+				}
+				return sum
+			}
+
+			console.log(getSumOddColumn(table));
+
+			function getSumEvenRowsOddColumns(array) {
+				let sum = 0
+				for (let row = 1; row < array.length; row+=2) {
+					for (let col = 0; col < array[row].length; col+=2) {
+						sum += array[row][col]
+					}
+				}
+				return sum
+			}
+
+			console.log(getSumEvenRowsOddColumns(table));
+
+			function getSumOddRowsEvenColumns(array) {
+				let sum = 0
+				for (let row = 0; row < array.length; row+=2) {
+					for (let col = 1; col < array[row].length; col+=2) {
+						sum += array[row][col]
+					}
+				}
+				return sum
+			}
+
+			console.log(getSumOddRowsEvenColumns(table));
+		</script>
+	</body>
+</html>
