@@ -6,6 +6,7 @@
 		<title>Document</title>
 	</head>
 	<body>
+		<a href="/Lesson_11/index.html">Назад</a>
 		<h1>Задача 2</h1>
 
 		<p>
@@ -94,11 +95,18 @@
 					newArrayTemp.push(maxNum)
 				}
 				console.log(newArrayTemp);
-				for (let k = 0; k < newArrayTemp.length; k++) {
-					if (newArrayTemp[k+1]>newArrayTemp[k]) {
-						let newTemp = newArrayForSort[k]
-						newArrayForSort[k] = newArrayForSort[k+1]
-						newArrayForSort[k+1] = newTemp
+
+				for (let i = 0; i < newArrayForSort.length - 1; i++) {
+					for (let j = 0; j < newArrayForSort.length - i - 1; j++) {
+						if (newArrayTemp[j] < newArrayTemp[j + 1]) {
+							let newTemp = newArrayTemp[j];
+							newArrayTemp[j] = newArrayTemp[j + 1];
+							newArrayTemp[j + 1] = newTemp;
+
+							let newWeek = newArrayForSort[j];
+							newArrayForSort[j] = newArrayForSort[j + 1];
+							newArrayForSort[j + 1] = newWeek;
+						}
 					}
 				}
 				return newArrayForSort
@@ -187,11 +195,17 @@
 					newArrayTemp.push(sum)
 				}
 				console.log(newArrayTemp);
-				for (let k = 0; k < newArrayTemp.length; k++) {
-					if (newArrayTemp[k+1]>newArrayTemp[k]) {
-						let newTemp = newArrayForSort[k]
-						newArrayForSort[k] = newArrayForSort[k+1]
-						newArrayForSort[k+1] = newTemp
+				for (let i = 0; i < newArrayForSort.length - 1; i++) {
+					for (let j = 0; j < newArrayForSort.length - i - 1; j++) {
+						if (newArrayTemp[j] < newArrayTemp[j + 1]) {
+							let newTemp = newArrayTemp[j];
+							newArrayTemp[j] = newArrayTemp[j + 1];
+							newArrayTemp[j + 1] = newTemp;
+
+							let newWeek = newArrayForSort[j];
+							newArrayForSort[j] = newArrayForSort[j + 1];
+							newArrayForSort[j + 1] = newWeek;
+						}
 					}
 				}
 				return newArrayForSort
