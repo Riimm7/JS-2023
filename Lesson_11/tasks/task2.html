@@ -123,10 +123,8 @@
 			function getMaxIncomeDay(dayNum, array) {
 				let maxIncomeDay = 0
 				for (let shop = 0; shop < array.length; shop++) {
-					for (let day = dayNum-1; day < dayNum; day++) {
-						if (array[shop][day] > maxIncomeDay) {
-							maxIncomeDay = array[shop][day]
-						}
+					if (array[shop][dayNum] > maxIncomeDay) {
+						maxIncomeDay = array[shop][dayNum]
 					}
 				}
 				return maxIncomeDay

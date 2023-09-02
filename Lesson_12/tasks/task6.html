@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<a href="../index.html">Назад</a>
+		<h1>Задача 6</h1>
+
+		<p>
+			Дано масив імен. Застосовуючи відповідне сортування та бінарний
+			пошук визначити, чи є у масиві ім’я довжиною 5 символів і під яким
+			індексом.
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			//функція пошуку імені
+			function includeIndexLengthName(arr, lengthName) {
+				let startIndex = 0;
+				let endIndex = arr.length - 1;
+				while (startIndex <= endIndex) {
+					const middleIndex = Math.floor((endIndex + startIndex) / 2);
+					if (arr[middleIndex].length === lengthName)
+						return middleIndex;
+					if (arr[middleIndex].length < lengthName)
+						startIndex = middleIndex + 1;
+					if (arr[middleIndex].length > lengthName)
+						endIndex = middleIndex - 1;
+				}
+				return -1;
+			}
+
+			//масив імен
+			let namesArr = [
+				"Helena",
+				"Sebastian",
+				"Christian",
+				"Barbara",
+				"Olga",
+				"Petro",
+				"Asterix",
+			];
+
+			//сортування масиву
+			let sortNamesArr = namesArr.sort(function (a, b) {
+				return a.length - b.length;
+			});
+			document.write(`Відсортований масив: ${sortNamesArr}<br>`);
+
+			const searchIndexName = includeIndexLengthName(sortNamesArr, 5);
+			if (searchIndexName !== -1)
+				document.write(`Ім'я під номером ${searchIndexName + 1}`);
+			else document.write("Ім'я відсутнє");
+		</script>
+	</body>
+</html>

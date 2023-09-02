@@ -37,8 +37,9 @@
 			function getGameField(num) {
 				let fieldArray = [];
 				for (let i = 0; i < num; i++) {
-					let fieldRow = new Array(num);
-					fieldRow.fill(0);
+					// let fieldRow = new Array(num);
+					// fieldRow.fill(0);
+					let fieldRow = new Array(num).fill(0);
 					fieldArray.push(fieldRow);
 				}
 				return fieldArray;

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<a href="../index.html">Назад</a>
+		<h1>Задача 4</h1>
+
+		<p>
+			Для розглянутих методів сортування спробувати вивести етапи
+			сортування шляхом виведення відповідних таблиць за зразком. Тобто
+			кожного разу після обміну елементів вивести поточний стан масиву на
+			екран.
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			function generateRandomArray(length, minValue, maxValue) {
+				let randomArray = [];
+				for (let i = 0; i < length; i++) {
+					let randomNum =
+						Math.floor(Math.random() * (maxValue - minValue + 1)) +
+						minValue;
+					randomArray.push(randomNum);
+				}
+				return randomArray;
+			}
+
+			let randomArray = generateRandomArray(7, 1, 100);
+			console.log(randomArray);
+
+			//сортування бульбашкою
+			function bubbleSort(arr) {
+				let bubbleSortArray = JSON.parse(JSON.stringify(arr));
+
+				let changed;
+				do {
+					changed = false;
+					for (let i = 1; i < bubbleSortArray.length; i++) {
+						if (bubbleSortArray[i - 1] > bubbleSortArray[i]) {
+							let tmp = bubbleSortArray[i - 1];
+							bubbleSortArray[i - 1] = bubbleSortArray[i];
+							bubbleSortArray[i] = tmp;
+							changed = true;
+						}
+					}
+					document.write(
+						`Сортування бульбашкою :${bubbleSortArray}<br>`
+					);
+				} while (changed);
+			}
+			document.write("<br>");
+
+			//функція обміну
+			function swap(arr, i, j) {
+				const temp = arr[i];
+				arr[i] = arr[j];
+				arr[j] = temp;
+			}
+
+			//сортування змішуванням
+			function shakerSort(array) {
+				let shakerSortArray = JSON.parse(JSON.stringify(array));
+
+				let leftIndex = 0;
+				let rightIndex = shakerSortArray.length - 1;
+
+				while (leftIndex < rightIndex) {
+					for (let idx = leftIndex; idx < rightIndex; idx++) {
+						if (shakerSortArray[idx] > shakerSortArray[idx + 1]) {
+							swap(shakerSortArray, idx, idx + 1);
+							document.write(
+								`Переміщення вправо :${shakerSortArray}${shakerSortArray}<br>`
+							);
+						}
+					}
+					rightIndex--;
+
+					for (let idx = rightIndex; idx > leftIndex; idx--) {
+						if (shakerSortArray[idx] < shakerSortArray[idx - 1]) {
+							swap(shakerSortArray, idx, idx - 1);
+							document.write(
+								`Переміщення вліво :${shakerSortArray}<br>`
+							);
+						}
+					}
+					leftIndex++;
+				}
+
+				return shakerSortArray;
+			}
+
+			//сортування включенням
+			function insertionSort(arr) {
+				let insertionSortArray = JSON.parse(JSON.stringify(arr));
+
+				for (let i = 1; i < insertionSortArray.length; i++) {
+					let currentElement = insertionSortArray[i];
+					let j = i - 1;
+
+					while (j >= 0 && insertionSortArray[j] > currentElement) {
+						insertionSortArray[j + 1] = insertionSortArray[j];
+						j--;
+					}
+					insertionSortArray[j + 1] = currentElement;
+					document.write(
+						`Сортування включенням :${insertionSortArray}<br>`
+					);
+				}
+
+				return insertionSortArray;
+			}
+
+			//сортування вибором
+			function selectionSort(arr) {
+				let selectionSortArray = JSON.parse(JSON.stringify(arr));
+
+				for (let i = 0; i < selectionSortArray.length - 1; i++) {
+					let minIndex = i;
+					for (let j = i + 1; j < selectionSortArray.length; j++) {
+						if (
+							selectionSortArray[j] < selectionSortArray[minIndex]
+						) {
+							minIndex = j;
+						}
+					}
+					if (minIndex !== i) {
+						let temp = selectionSortArray[i];
+						selectionSortArray[i] = selectionSortArray[minIndex];
+						selectionSortArray[minIndex] = temp;
+					}
+					document.write(
+						`Сортування вибором :${selectionSortArray}<br>`
+					);
+				}
+
+				return selectionSortArray;
+			}
+
+			//швидке сортування
+
+			//Поділ фрагменту від p до q
+			//на дві частини (<=pivot та >pivot)
+			function Partition(arr, p, q) {
+				let pivot = arr[q];
+				let i = p - 1;
+				for (let j = p; j < q; j++) {
+					if (arr[j] <= pivot) {
+						i = i + 1;
+						swap(arr, i, j);
+					}
+				}
+				swap(arr, i + 1, q);
+				document.write(`pivot:${pivot}<br>`);
+				//повертаємо нову позицію pivot
+				return i + 1;
+			}
+
+			//Основна функція
+			function quickSort(arr, p, q) {
+				if (p >= q) return;
+				//ділимо на дві частини
+				let i = Partition(arr, p, q);
+				document.write(`сорт зліва:${randomArray}<br>`);
+				//окремо сортуємо першу частину
+				quickSort(arr, p, i - 1);
+				//окремо сортуємо другу частину
+				quickSort(arr, i + 1, q);
+			}
+
+			document.write(`Стартовий масив :${randomArray}<br><br>`);
+			bubbleSort(randomArray);
+			document.write("<br>");
+			shakerSort(randomArray);
+			document.write("<br>");
+			insertionSort(randomArray);
+			document.write("<br>");
+			selectionSort(randomArray);
+			document.write("<br>");
+			document.write(`Стартовий масив :${randomArray}<br>`);
+			quickSort(randomArray, 0, randomArray.length - 1);
+		</script>
+	</body>
+</html>
