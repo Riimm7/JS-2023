@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<a href="../index.html">Назад</a>
+		<h1>Задача 1</h1>
+		<p>
+			Нехай x<sub>0</sub> = 0, x<sub>i</sub> = x<sub>i-1</sub> + 2i, де
+			i=1,2,... Визначити . Розв’язати з використанням рекурсивних і
+			нерекурсивних алгоритмів
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			function calculateXnRecursive(x, n) {
+				if (n === 1) return x;
+				return calculateXnRecursive(x, n - 1) + 2 * x;
+			}
+			console.log(calculateXnRecursive(1, 10));
+
+			function calculateXn(x, n) {
+				let res = x;
+				for (let i = 2; i <= n; i++) {
+					res += 2 * x;
+				}
+				return res;
+			}
+			console.log(calculateXn(1, 10));
+		</script>
+	</body>
+</html>

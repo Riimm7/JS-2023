@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<a href="../index.html">Назад</a>
+		<h1>Задача 6</h1>
+
+		<p>
+			Через 20 секунд перейти на сайт ukr.net. Для цього через 20 секунд
+			після відкриття треба виконати команду
+			<code>window.location.href = 'https://www.ukr.net/'</code>
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			/* ol{
+				list-style: none;
+			} */
+		</style>
+		<script>
+			function siteRedirect() {
+				window.location.href = "https://www.ukr.net/";
+			}
+			let siteRedirectTimer = setTimeout(siteRedirect, 20000);
+		</script>
+	</body>
+</html>
