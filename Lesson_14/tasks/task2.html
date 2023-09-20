@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title>Document</title>
+</head>
+
+<body>
+   <a href="../index.html">Назад</a>
+   <h1>Задача 2</h1>
+
+   <p>
+      Розробити функцію, у яку передають об’єкт (день, місяць, рік). Визначити, який буде рік через N місяців.
+   </p>
+   <style>
+      body {
+         font-family: Arial, sans-serif;
+         background-color: #f2f2f2;
+         padding: 20px;
+         text-align: center;
+      }
+
+      h1 {
+         color: #333;
+      }
+
+      p {
+         color: #666;
+      }
+
+      /* ol{
+         list-style: none;
+   		} */
+   </style>
+   <script>
+      let date = {
+         day: 1,
+         month: 8,
+         year: 2010
+      };
+      function getNewDate(date, numMonths) {
+         for (let i = 0; i < numMonths; i++) {
+            if (date.month === 12) {
+               date.month = 1;
+               date.year++;
+            } else {
+               date.month++;
+            }
+         }
+      }
+      getNewDate(date, 10)
+      // console.log(date);
+   </script>
+</body>
+
+</html>

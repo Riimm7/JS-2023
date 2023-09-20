@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<a href="../index.html">Назад</a>
+		<h1>Задача 1</h1>
+		<p>
+			Описати масив об’єктів – сайтів розроблених компанією з
+			такими властивостями:
+			<ol style="text-align: start; margin-left: 30%;">
+				<li>назва компанії на час розробки (назву періодично змінюють)</li>
+				<li>власник компанії</li>
+				<li>спонсори (масив спонсорів)
+					<ul style="text-align: start;">
+						<li>прізвище спонсора</li>
+						<li>ім’я спонсора</li>
+						<li>сума вкладень спонсора</li>
+					</ul>
+				</li>
+				<li>рік випуску</li>
+				<li>вартість сайту</li>
+			</ol> 
+			Знайти: 
+			<ol>
+				<li>загальну вартість усіх сайтів</li> 
+				<li>кількість сайтів, що було зроблено між 2000 та 2009 рр.</li>
+				<li>кількість сайтів, де сума спонсорських вкладень була більшою за 100000</li>
+				<li>створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)</li>
+				<li>знайти рік, коли прибуток був найбільшим</li>
+				<li>упорядкувати список за спаданням прибутку</li>
+				<li>Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000</li>
+			</ol>
+		</p>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				background-color: #f2f2f2;
+				padding: 20px;
+				text-align: center;
+			}
+			h1 {
+				color: #333;
+			}
+			p {
+				color: #666;
+			}
+			ol{
+				list-style: none;
+			}
+		</style>
+		<script>
+		const websites = [
+  {
+    companyName: 'Company A',
+    owner: 'John Doe',
+    sponsors: [
+      {
+        lastName: 'Smith',
+        firstName: 'Alice',
+        investmentAmount: 5000,
+      },
+      {
+        lastName: 'Johnson',
+        firstName: 'Bob',
+        investmentAmount: 7500,
+      },
+    ],
+    yearReleased: 2020,
+    siteCost: 10000,
+  },
+  {
+    companyName: 'Company B',
+    owner: 'Jane Smith',
+    sponsors: [
+      {
+        lastName: 'Brown',
+        firstName: 'Charlie',
+        investmentAmount: 3000,
+      },
+      {
+        lastName: 'Davis',
+        firstName: 'David',
+        investmentAmount: 6000,
+      },
+    ],
+    yearReleased: 2007,
+    siteCost: 12000,
+  },
+  {
+    companyName: 'Company C',
+    owner: 'Alice Johnson',
+    sponsors: [
+      {
+        lastName: 'Wilson',
+        firstName: 'Eve',
+        investmentAmount: 9000,
+      },
+      {
+        lastName: 'Anderson',
+        firstName: 'Frank',
+        investmentAmount: 5500,
+      },
+    ],
+    yearReleased: 2022,
+    siteCost: 15000,
+  },
+  {
+    companyName: 'Company D',
+    owner: 'Bob Brown',
+    sponsors: [
+      {
+        lastName: 'Harris',
+        firstName: 'Grace',
+        investmentAmount: 7000,
+      },
+      {
+        lastName: 'Martin',
+        firstName: 'Helen',
+        investmentAmount: 4000,
+      },
+    ],
+    yearReleased: 2015,
+    siteCost: 9000,
+  },
+  {
+    companyName: 'Company E',
+    owner: 'Charlie Davis',
+    sponsors: [
+      {
+        lastName: 'Jackson',
+        firstName: 'Ivy',
+        investmentAmount: 4500,
+      },
+      {
+        lastName: 'White',
+        firstName: 'Jack',
+        investmentAmount: 8000,
+      },
+    ],
+    yearReleased: 2021,
+    siteCost: 17000,
+  },
+];
+
+	//загальна вартість усіх сайтів
+
+	let calculateTotalWebsiteCost = websites.reduce((prevValue, company) => 
+	prevValue += company.siteCost
+	,0
+	)
+	console.log(calculateTotalWebsiteCost);
+
+	//кількість сайтів, що було зроблено між 2000 та 2009 рр
+
+	let countWebsitesBetween2000And2009 = websites.reduce((prevValue, company) => {
+		if(company.yearReleased>1999 && company.yearReleased<2010){
+			return prevValue+1
+		} else {
+			return prevValue
+		}
+	}
+	,0)
+	console.log(countWebsitesBetween2000And2009);
+
+	// кількість сайтів, де сума спонсорських вкладень була більшою за 100000
+
+	let countWebsitesCostMore100k = websites.reduce((prevValue, company) => {
+		if(company.siteCost>100000){
+			return prevValue+1
+		} else {
+			return prevValue
+		}
+	}
+	,0)
+	console.log(countWebsitesCostMore100k);
+
+	// створити загальний список усіх спонсорів (поки можуть повторюватись, просто зібрати усі у масив)
+
+	let arrSponsors = websites.reduce((prevValue, company) => {
+		for (let i = 0; i < company.sponsors.length; i++) {
+			prevValue.push(company.sponsors[i].firstName + ' ' + company.sponsors[i].lastName)
+		}
+		return prevValue
+	}
+	,[])
+	console.log(arrSponsors);
+
+	// знайти рік, коли прибуток був найбільшим
+
+	function getMaxProfitYearReleased(websites) {
+   let maxProfitYear = 0;
+   let yearWithMaxProfit = 0;
+
+   for (const website of websites) {
+		const totalInvestment = website.sponsors.reduce(
+			(total, sponsor) => total + sponsor.investmentAmount,
+      0);
+
+		const currentProfit = website.siteCost - totalInvestment;
+
+		if (currentProfit > maxProfitYear) {
+			maxProfitYear = currentProfit;
+			yearWithMaxProfit = website.yearReleased;
+		}
+	}
+
+		return yearWithMaxProfit;
+	}
+
+	getMaxProfitYearReleased(websites);
+
+	// упорядкувати список за спаданням прибутку
+
+	function sortMaxProfit(websites) {
+		websites.sort((a, b) => {
+		const totalInvestmentA = a.sponsors.reduce(
+			(total, sponsor) => total + sponsor.investmentAmount,
+		0);
+		const profitA = a.siteCost - totalInvestmentA;
+
+		const totalInvestmentB = b.sponsors.reduce(
+			(total, sponsor) => total + sponsor.investmentAmount,
+      0);
+		const profitB = b.siteCost - totalInvestmentB;
+
+   	return profitB - profitA; // Сортувати в порядку спадання прибутку
+		});
+
+		return websites;
+	}
+
+	sortMaxProfit(websites);
+
+	// Створити 2 окремих списки з копіями об’єктів, що містять сайти з вартість до 10000 і більше 10000
+
+	function getWebsitesOverCost(cost, websites) {
+		let websitesOver10k = websites.filter((website) => website.siteCost>cost)
+		return websitesOver10k
+	}
+	function getWebsitesUnderCost(cost, websites) {
+		let websitesUnder10k = websites.filter((website) => website.siteCost<=cost)
+		return websitesUnder10k
+	}
+
+		</script>
+	</body>
+
+</html>
