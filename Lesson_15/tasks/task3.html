@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<a href="../index.html">Назад</a>
+	<h1>Задача 3</h1>
+
+	<p>
+		Розробити клас MultChecker для перевірки таблиці множення
+	<table>
+		<tr>
+			<td rowspan="3">Поля</td>
+			<td>Число, яке перевіряємо</td>
+		</tr>
+		<tr>
+			<td>Кількість правильних відповідей</td>
+		</tr>
+		<tr>
+			<td>Кількість неправильних відповідей</td>
+		</tr>
+		<tr>
+			<td rowspan="3">Методи</td>
+			<td>Генерування прикладу (метод випадковим чином визначає друге число, перше число фіксоване)</td>
+		</tr>
+		<tr>
+			<td>Перевірка правильності вказаної відповіді</td>
+		</tr>
+		<tr>
+			<td>render</td>
+		</tr>
+	</table>
+
+	</p>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		p {
+			color: #666;
+		}
+
+		table {
+			width: auto;
+			margin: 0 auto;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 8px;
+		}
+
+		/* ol{
+				list-style: none;
+			} */
+	</style>
+	<script>
+		class MultChecker {
+			constructor(num) {
+				this.num = num;
+				this.rightAnswerCount = 0;
+				this.wrongAnswerCount = 0;
+				this.secondNum = 0;
+				this.userAnswer = 0;
+			}
+
+			start() {
+				this.secondNum = Math.floor(Math.random() * 8) + 2;
+				this.userAnswer = parseInt(prompt(`${this.num} * ${this.secondNum}`));
+			}
+
+			check() {
+				if (this.userAnswer === this.num * this.secondNum) {
+					alert('Вірно');
+					this.rightAnswerCount++
+				} else {
+					alert('Невірно');
+					this.wrongAnswerCount++
+				}
+			}
+
+			run() {
+				while (confirm('граємо?')) {
+					this.start()
+					this.check()
+				}
+				this.render()
+			}
+
+			render() {
+				document.write(`Правильних відповідей: ${this.rightAnswerCount} <br>`);
+				document.write(`Неправильних відповідей: ${this.wrongAnswerCount}`);
+			}
+		}
+
+		// Приклад використання класу MultChecker
+		const multChecker5 = new MultChecker(5);
+		multChecker5.run();
+
+	</script>
+</body>
+
+</html>

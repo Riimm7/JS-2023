@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<a href="../index.html">Назад</a>
+	<h1>Задача 5</h1>
+
+	<p>
+		Розробити клас «Керівник танців»
+	<table>
+		<tr>
+			<td rowspan="2">Поля</td>
+			<td>Масив імен хлопців</td>
+		</tr>
+		<tr>
+			<td>Масив імен дівчат</td>
+		</tr>
+		<tr>
+			<td rowspan="4">Методи</td>
+			<td>Метод випадкового вибору імені хлопця</td>
+		</tr>
+		<tr>
+			<td>Метод випадкового вибору імені дівчини</td>
+		</tr>
+		<tr>
+			<td>Метод виведення пари для танців</td>
+		</tr>
+		<tr>
+			<td>Метод run, який ініціює через кожні 5 секунд виведення нової пари для танців</td>
+		</tr>
+	</table>
+
+	</p>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		p {
+			color: #666;
+		}
+
+		table {
+			width: auto;
+			margin: 0 auto;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 8px;
+		}
+
+		/* ol{
+				list-style: none;
+			} */
+	</style>
+	<script>
+		class DanceInstructor {
+			constructor() {
+				this.boysNames = [
+					'Олег',
+					'Іван',
+					'Максим',
+					'Андрій',
+					'Володимир',
+				]
+				this.girlsNames = [
+					'Анна',
+					'Марія',
+					'Ольга',
+					'Юлія',
+					'Наталія',
+				]
+			}
+			getRandNum(minNum, maxNum) {
+				return Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+			}
+			getRandBoy() {
+				return this.boysNames[this.getRandNum(0, this.boysNames.length - 1)]
+			}
+			getRandGirl() {
+				return this.girlsNames[this.getRandNum(0, this.girlsNames.length - 1)]
+			}
+			getDanceCouple() {
+				return this.getRandBoy() + ' & ' + this.getRandGirl()
+			}
+			run() {
+				(setInterval(() => {
+					console.log(this.getDanceCouple())
+				}, 5000
+				))
+			}
+		}
+		let dance = new DanceInstructor
+		// dance.run()
+	</script>
+</body>
+
+</html>

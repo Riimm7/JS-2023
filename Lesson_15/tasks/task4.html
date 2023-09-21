@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<a href="../index.html">Назад</a>
+	<h1>Задача 4</h1>
+
+	<p>
+		Розробити клас Baner
+	<table>
+		<tr>
+			<td>Поля</td>
+			<td>Масив об’єктів (графічних зображень та посилань на сайти)</td>
+		</tr>
+		<tr>
+			<td rowspan="2">Методи</td>
+			<td>Метод випадкового вибору об’єкта (графічного зображення та посилання)</td>
+		</tr>
+		<tr>
+			<td>Метод виведення випадкового банера</td>
+		</tr>
+	</table>
+
+	</p>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		p {
+			color: #666;
+		}
+
+		table {
+			width: auto;
+			margin: 0 auto;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 8px;
+		}
+
+		/* ol{
+				list-style: none;
+			} */
+	</style>
+	<script>
+		class Banner {
+			constructor() {
+				this.imagesAndLinks = [
+					{
+						title: 'Pikachu',
+						imageUrl: 'https://i.pinimg.com/564x/bf/95/34/bf953419d76bf747cba69b55e6e03957.jpg',
+						websiteUrl: 'https://www.pinterest.com/pin/651755377337440200/',
+					},
+					{
+						title: 'Mewtwo',
+						imageUrl: 'https://i.pinimg.com/564x/61/2a/1b/612a1bdd7e3d31e5363c87433d6b2f9f.jpg',
+						websiteUrl: 'https://www.pinterest.com/pin/598556606716337278/',
+					},
+				];
+			}
+			getRandNum(minNum, maxNum) {
+				return Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+			}
+			getRandomObject() {
+				return this.imagesAndLinks[this.getRandNum(0, this.imagesAndLinks.length - 1)]
+			}
+			displayPicture() {
+				const imageTitle = this.getRandomObject().imageTitle;
+				const imageUrl = this.getRandomObject().imageUrl;
+				const websiteUrl = this.getRandomObject().websiteUrl;
+				const imgTag = `<a href="${websiteUrl}"><img src="${imageUrl}" alt="${imageTitle}"></a>`;
+				document.write(imgTag);
+			}
+		}
+		const banner = new Banner();
+		console.log(banner.getRandomObject());
+		banner.displayPicture()
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<a href="../index.html">Назад</a>
+	<h1>Задача 2</h1>
+	<p>
+		Створити об’єкт «Авто».
+	<table>
+		<tr>
+			<th>Авто</th>
+			<th></th>
+		</tr>
+		<tr>
+			<td rowspan="5">Поля (властивості)</td>
+			<td>Марка</td>
+		</tr>
+		<tr>
+			<td>Розмір бака</td>
+		</tr>
+		<tr>
+			<td>Кількість наявних літрів</td>
+		</tr>
+		<tr>
+			<td>Кількість місць</td>
+		</tr>
+		<tr>
+			<td>Кількість пасажирів</td>
+		</tr>
+		<tr>
+			<td rowspan="4">Методи (дії)</td>
+			<td>Заправка на вказану кількість літрів</td>
+		</tr>
+		<tr>
+			<td>Виведення кількості пасажирів</td>
+		</tr>
+		<tr>
+			<td>Додавання пасажирів</td>
+		</tr>
+		<tr>
+			<td>Висадка пасажирів</td>
+		</tr>
+	</table>
+	</p>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		p {
+			color: #666;
+		}
+
+		table {
+			width: auto;
+			margin: 0 auto;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 8px;
+		}
+
+		/* ol{
+				list-style: none;
+			} */
+	</style>
+	<script>
+		class Car {
+			constructor(model, tankSize, fuelAvailable, passengerCapacity, numberOfPassengers) {
+				this.model = model
+				this.tankSize = tankSize
+				this.fuelAvailable = fuelAvailable
+				this.passengerCapacity = passengerCapacity
+				this.numberOfPassengers = numberOfPassengers
+			}
+			fillingFuel(num) {
+				let fullTankFuel = this.tankSize - this.fuelAvailable
+				if (this.fuelAvailable === this.tankSize) {
+					alert('бак повний')
+				} else if (num <= fullTankFuel) {
+					this.fuelAvailable += num
+					fullTankFuel -= num
+					alert(`потрібно ${fullTankFuel}л. до повного баку`)
+				} else {
+					alert('забагато палива')
+				}
+			}
+			addPassenger(num) {
+				let availableSeats = this.passengerCapacity - this.numberOfPassengers
+				if (this.numberOfPassengers === this.passengerCapacity) {
+					alert('немає вільних місць')
+				} else if (num <= availableSeats) {
+					this.numberOfPassengers += num
+					availableSeats -= num
+					alert(`${availableSeats} вільних місць`)
+				} else {
+					alert(`стільки людей не поміститься, можемо взяти тільки ${availableSeats}`)
+				}
+			}
+			lossPassenger(num) {
+				if (this.numberOfPassengers === 0) {
+					alert('нема кого висаджувати')
+				} else if (this.numberOfPassengers >= num) {
+					this.numberOfPassengers -= num
+					alert(`залишилось ${this.numberOfPassengers} пасажирів`)
+				} else alert('немає стільки пасажирів')
+			}
+			toString() {
+				return `зараз є ${this.numberOfPassengers} пасажирів`
+			}
+		}
+
+		const myCar = new Car('Toyota', 60, 20, 3, 1);
+		myCar.fillingFuel(10)
+		myCar.addPassenger(2)
+		alert(myCar)
+		myCar.lossPassenger(3)
+	</script>
+</body>
+
+</html>

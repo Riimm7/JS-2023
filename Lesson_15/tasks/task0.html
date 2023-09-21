@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<a href="../index.html">Назад</a>
+	<h1>Задача 0</h1>
+
+	<p>
+		Дано два об’єкта. Обидва містять масив цілих чисел. При цьому у одному з них є функція знаходження суми, а у
+		іншому – функція для знаходження добутку тих, які знаходяться між заданими мінімальним і максимальних значенням.
+		Використати обидва методи стосовно обидвох об’єктів (використати call, apply)
+	</p>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		p {
+			color: #666;
+		}
+
+		/* ol{
+				list-style: none;
+			} */
+	</style>
+	<script>
+		// Об'єкт з функцією для знаходження суми чисел у масиві
+		const sumCalculator = {
+			numbers: [1, 2, 3, 4, 5],
+			calculate: function () {
+				return this.numbers.reduce((acc, num) => acc + num, 0);
+			},
+		};
+
+		// Об'єкт з функцією для знаходження добутку чисел, які знаходяться між мінімальним і максимальним значеннями у масиві
+		const productCalculator = {
+			numbers: [1, 5, 3, 8, 2],
+			calculate: function () {
+				const minIndex = this.numbers.indexOf(Math.min(...this.numbers));
+				const maxIndex = this.numbers.indexOf(Math.max(...this.numbers));
+
+				const [start, end] = minIndex < maxIndex ? [minIndex, maxIndex] : [maxIndex, minIndex];
+				const numbersBetweenMinMax = this.numbers.slice(start + 1, end);
+
+				return numbersBetweenMinMax.reduce((acc, num) => acc * num, 1);
+			},
+		};
+		console.log(productCalculator.calculate());
+
+		console.log(sumCalculator.calculate.call(productCalculator))
+		console.log(productCalculator.calculate.apply(sumCalculator));
+	</script>
+</body>
+
+</html>

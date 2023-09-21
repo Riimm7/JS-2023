@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<a href="../index.html">Назад</a>
+	<h1>Задача 1</h1>
+	<p>
+		Створити об’єкт «Тир». У масиві зберігаються 1, якщо у цьому квадраті є заєць і 0 в іншому випадку.
+	<table>
+		<tr>
+			<th>Тир</th>
+			<th></th>
+		</tr>
+		<tr>
+			<td>Поля (властивості)</td>
+			<td>Масив, у якому зберігається поле з зайцями</td>
+		</tr>
+		<tr>
+			<td rowspan="2">Методи (дії)</td>
+			<td>Виведення ігрового поля</td>
+		</tr>
+		<tr>
+			<td>Метод пострілу (задається позиція пострілу)</td>
+		</tr>
+	</table>
+	</p>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		p {
+			color: #666;
+		}
+
+		table {
+			width: auto;
+			margin: 0 auto;
+		}
+
+		th,
+		td {
+			border: 1px solid black;
+			padding: 8px;
+		}
+
+		/* ol{
+				list-style: none;
+			} */
+	</style>
+	<script>
+		class ShootingRange {
+			constructor(fieldCellNum) {
+				this.fieldCellNum = fieldCellNum
+				this.shootingField = this.createShootingField()
+			}
+			createShootingField() {
+				let shootingField = []
+				for (let cell = 0; cell < this.fieldCellNum; cell++) {
+					shootingField.push(Math.floor(Math.random() * 2))
+				}
+				return shootingField
+			}
+			playerShot() {
+				while (confirm('бажаєте стріляти?')) {
+					let shootCell = parseInt(prompt(`куди бажаєте стіляти? (від 1 до ${this.fieldCellNum})`))
+					this.shootingField[shootCell - 1] === 1 ? alert('попав') : alert('промах')
+
+				}
+			}
+		}
+		const shootingRange = new ShootingRange(10)
+		shootingRange.playerShot()
+	</script>
+</body>
+
+</html>
