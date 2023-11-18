@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <a href="../index.html">Назад</a>
+    <h1>Задача 2</h1>
+    <p>
+      Створити клас TMoney для роботи з грошовими сумами. Сума повинна
+      зберігатися у вигляді доларового еквіваленту. Реалізувати методи
+      додавання/вилучення грошової маси, вказуючи необхідну суму у гривнях, та
+      визначення курсу долара, при якому сума у гривнях збільшиться на 100. Курс
+      долара зберігати в окремому полі.
+    </p>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+
+      /* ol{
+				list-style: none;
+			} */
+    </style>
+    <script>
+      class TMoney {
+        constructor(initUahMoney) {
+          this.uahMoney = initUahMoney;
+          this.currencyRate = 37.5;
+          this.usdMoney = this.uahMoney / this.currencyRate;
+        }
+        addCash(value) {
+          this.uahMoney += value;
+          this.usdMoney = this.uahMoney / this.currencyRate;
+        }
+        reduceCash(value) {
+          this.uahMoney -= value;
+          this.usdMoney = this.uahMoney / this.currencyRate;
+        }
+        upgradedCurrencyRate() {
+          return (this.uahMoney + 100) / this.usdMoney;
+        }
+        toString() {
+          return `uah = ${this.uahMoney}, usd = ${this.usdMoney.toFixed(
+            2
+          )} <br>`;
+        }
+      }
+      let homeCash = new TMoney(38000);
+      document.write(homeCash);
+      homeCash.addCash(1000);
+      document.write(homeCash);
+      homeCash.reduceCash(1000);
+      document.write(homeCash);
+      console.log(homeCash.upgradedCurrencyRate().toFixed(2));
+    </script>
+  </body>
+</html>

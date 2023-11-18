@@ -521,11 +521,43 @@
 
       // сформувати новий список об”єктів тільки доступних для продажу товарів, які міститимуть тільки ідентифікатор товару (id), нову ціну (price), стару ціну (old_price), та ціну у доларах (usd_price)
 
-      let newDataList = dataList
-         .filter((item) => item.sell_status === "available")
-         .map((item) => ({ id: item.id, price: item.price, old_price: item.old_price, usd_price: item.usd_price }))
+      // той що писав я
+      // let newDataList = dataList
+      //    .filter((item) => item.sell_status === "available")
+      //    .map((item) => ({ id: item.id, price: item.price, old_price: item.old_price, usd_price: item.usd_price }))
+      // console.log(newDataList);
 
-      console.log(newDataList);
+      //--- 1) оптимізований варіант того що я зробив, 2 проходи - фільтр і мап
+      let availableProductsList = dataList
+         .filter((product) => product.sell_status === 'available')
+         // деструктуризація
+         .map(({ id, price, old_price, usd_price }) => ({
+            id,
+            price,
+            old_price,
+            usd_price,
+         }))
+      console.log(availableProductsList)
+      //--- 2) оптимальний варіант якщо багато елементів, прохід за 1 раз
+      let availableProductsList = []
+      for (const product of dataList) {
+         if (product.sell_status === 'available') {
+            // деструктуризація --->
+            const { id, price, old_price, usd_price } = product
+            //попередній рядок аналогічний окремому опису констат, назви яких співпадають з назвами властивостей об"єктів
+            // const id = product.id
+            // const price = product.price
+            // const old_price = product.old_price
+            // const usd_price = product.usd_price
+
+            availableProductsList.push({
+               id, // id:id
+               price, //price:price
+               old_price,
+               usd_price,
+            })
+         }
+      }
 
    </script>
 </body>

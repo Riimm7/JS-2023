@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <a href="../index.html">Назад</a>
+    <h1>Задача 4</h1>
+
+    <p>
+      Створити клас TBankomat, який моделює роботу банкомата. Клас повинен
+      містити поля для зберігання кількості купюр кожного із номіналів від 5 до
+      200 гривень. Реалізувати методи знаходження максимальної та мінімальної
+      сум, які може видати банкомат, та метод зняття деякої суми.
+    </p>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+
+      /* ol{
+				list-style: none;
+			} */
+    </style>
+    <script>
+      class TBankomat {
+        constructor({
+          banknote200 = 0,
+          banknote100 = 0,
+          banknote50 = 0,
+          banknote20 = 0,
+          banknote10 = 0,
+          banknote5 = 0,
+        }) {
+          this.banknote200 = banknote200;
+          this.banknote100 = banknote100;
+          this.banknote50 = banknote50;
+          this.banknote20 = banknote20;
+          this.banknote10 = banknote10;
+          this.banknote5 = banknote5;
+        }
+
+        toString() {
+          let sumMoney = this.calculateTotal();
+          return `Banknotes:
+              200 UAH: ${this.banknote200},
+              100 UAH: ${this.banknote100},
+              50 UAH: ${this.banknote50},
+              20 UAH: ${this.banknote20},
+              10 UAH: ${this.banknote10},
+              5 UAH: ${this.banknote5}
+              Total: ${sumMoney} UAH`;
+        }
+
+        calculateTotal() {
+          const banknotes = [200, 100, 50, 20, 10, 5];
+          return banknotes.reduce(
+            (total, value) => total + this[`banknote${value}`] * value,
+            0
+          );
+        }
+        getMinBanknote() {
+          const banknotes = [200, 100, 50, 20, 10, 5];
+          return banknotes.reduce(
+            (total, value) => (this[`banknote${value}`] > 0 ? value : total),
+            0
+          );
+        }
+        takeMoney(sum) {
+          const banknotes = [200, 100, 50, 20, 10, 5];
+          let money = [];
+
+          for (let i = 0; i < banknotes.length; i++) {
+            const banknoteValue = banknotes[i];
+
+            while (
+              sum >= banknoteValue &&
+              this[`banknote${banknoteValue}`] > 0
+            ) {
+              money.push(banknoteValue);
+              sum -= banknoteValue;
+              this[`banknote${banknoteValue}`]--;
+            }
+          }
+          return money;
+        }
+      }
+
+      let Bank = new TBankomat({
+        banknote200: 20,
+        banknote100: 10,
+        banknote50: 5,
+        banknote20: 100,
+        banknote10: 0,
+        banknote5: 1,
+      });
+
+      console.log(Bank);
+      console.log(`Banknote 100 UAH: ${Bank.banknote100}`);
+      console.log(Bank.getMinBanknote());
+      console.log(Bank.takeMoney(265));
+    </script>
+  </body>
+</html>

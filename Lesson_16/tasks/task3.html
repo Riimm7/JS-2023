@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Document</title>
+</head>
+
+<body>
+	<a href="../index.html">Назад</a>
+	<h1>Задача 3</h1>
+
+	<p>
+	<div class="parent">
+		<div class="div1">Об’єкт “Фірма”</div>
+		<div class="div2">поля :</div>
+		<div class="div3">
+			<ul>
+				<li>назва фірми</li>
+				<li>дата заснування (рік, місяць)</li>
+				<li>послуги (назва послуги, вартість, термін виконання)</li>
+				<li>адреси філіалів (країна, місто, вулиця, номер будинку)</li>
+			</ul>
+		</div>
+		<div class="div4">методи :</div>
+		<div class="div5">
+			<ul>
+				<li>визначення кількості років існування фірми</li>
+				<li>виведення всіх філіалів фірми у вказаному місті</li>
+				<li>виведення на екран послуг, що можуть бути виконані за вказану суму грошей та вказаний термін
+					часу</li>
+			</ul>
+		</div>
+	</div>
+	</p>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-color: #f2f2f2;
+			padding: 20px;
+			text-align: center;
+		}
+
+		h1 {
+			color: #333;
+		}
+
+		p {
+			color: #666;
+		}
+
+		/* ol{
+				list-style: none;
+			} */
+		.parent {
+			max-width: 50%;
+			margin: 0 auto;
+			display: grid;
+			grid-template-columns: repeat(2, auto);
+			grid-template-rows: repeat(3, auto);
+			background-color: #eee;
+			grid-template-areas:
+				"header header"
+				"sidebar content"
+				"sidebar2 content2";
+		}
+
+		.div1 {
+			grid-area: header;
+			border: 1px solid #000;
+			border-bottom: none;
+			padding: 10px 0px 10px 0px;
+		}
+
+		.div2 {
+			grid-area: sidebar;
+			padding-top: 16px;
+			border-top: 1px solid #000;
+			border-left: 1px solid #000;
+		}
+
+		.div3 {
+			grid-area: content;
+			border: 1px solid #000;
+			border-bottom: none;
+			text-align: left;
+		}
+
+		.div4 {
+			grid-area: sidebar2;
+			padding-top: 16px;
+			border-top: 1px solid #000;
+			border-left: 1px solid #000;
+			border-bottom: 1px solid #000;
+		}
+
+		.div5 {
+			grid-area: content2;
+			border: 1px solid #000;
+			text-align: left;
+		}
+	</style>
+	<script>
+    class Company {
+			constructor(name, creatingYear, creatingMonth, services, branchLocations){
+				this.name = name
+				this.creatingDate = {
+					year: creatingYear,
+					month: creatingMonth
+				}
+				this.services = services
+				this.branchLocations = branchLocations
+			}
+			calculateBusinessAge() {
+				return 2023 - this.creatingDate.year
+			}
+			getAllBranchesInCity(nameCity) {
+				return this.branchLocations.filter(el => el.city === nameCity);
+			}
+			displayAffordableServices(cost, month) {
+    return this.services.filter(el => el.cost <= cost && parseInt(el.duration) <= month);
+}
+
+		}
+
+		let myCompany = new Company(
+			'My Company',
+			2023,
+			'September',
+			[
+				{ serviceName: 'Web Development', cost: 5000, duration: '3 months' },
+				{ serviceName: 'Graphic Design', cost: 3000, duration: '2 months' }
+			],
+			[
+				{ country: 'USA', city: 'New York', street: 'Broadway', buildingNumber: '123' },
+				{ country: 'UK', city: 'London', street: 'Oxford Street', buildingNumber: '456' }
+			]
+		);
+  </script>
+
+</body>
+
+</html>

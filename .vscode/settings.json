@@ -1,1 +1,6 @@
-{}
+{
+  "cSpell.language": "en,uk",
+  "console-ninja.toolsToEnableSupportAutomaticallyFor": {
+    "live-server-extension": true
+  }
+}
