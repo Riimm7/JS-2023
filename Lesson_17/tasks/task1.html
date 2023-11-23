@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="../index.html">Назад</a>
+    <h1>Задача 1</h1>
+    <p>
+      Створити клас, що дозволяє виконувати такі операції над масивами:
+      знаходження кількості додатних, кількості від’ємних, кількість входжень
+      деякого числа (статичні методи)
+    </p>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        color: #666;
+      }
+      /* ol{
+				list-style: none;
+			} */
+    </style>
+    <script>
+      function getRandomNumber(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+      let randomArray = [];
+      for (let i = 0; i < 10; i++) {
+        let randomNumber = getRandomNumber(-100, 100); // наприклад, числа від 1 до 100
+        randomArray.push(randomNumber);
+      }
+
+      class ArrayOperations {
+        static numMoreThan0Count(array) {
+          return array.reduce((count, el) => (el > 0 ? count + 1 : count), 0);
+        }
+        static numLessThan0Count(array) {
+          return array.reduce((count, el) => (el < 0 ? count + 1 : count), 0);
+        }
+        static numCount(array, num) {
+          return array.reduce(
+            (count, el) => (el === num ? count + 1 : count),
+            0
+          );
+        }
+      }
+      console.log(randomArray);
+      console.log(ArrayOperations.numLessThan0Count(randomArray));
+      console.log(ArrayOperations.numCount(randomArray, 22));
+    </script>
+  </body>
+</html>

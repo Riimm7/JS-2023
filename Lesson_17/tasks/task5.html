@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="../index.html">Назад</a>
+    <h1>Задача 5</h1>
+
+    <p>
+      Дано два класи MultChecker (клас для перевірки таблиці множення - рандомно
+      генеруються числа, які треба перемножати), AddChecker (клас для перевірки
+      додавання - рандомно генеруються числа у заданому діапазоні, які треба
+      додавати). Обидва класи надсилають результати тестування об'єкту класу
+      Hystory, який зберігає історію тестування у масиві у вигляді об'єктів
+      Приклад.
+      <script>
+        testsList = [
+          {
+            firstNum: 1,
+            secondNum: 5,
+            opration: "*",
+            userAnswer: 7,
+            correctAnswer: 5,
+          },
+          {
+            firstNum: 3,
+            secondNum: 4,
+            opration: "+",
+            userAnswer: 7,
+            correctAnswer: 7,
+          },
+        ];
+      </script>
+      Можна створити окремий клас TestData, який описує один такий тест і у
+      якому будуть ці поля. Розробити клас TestManager, який використовуючи ці
+      класи за допомогою таймера періодично генерує якісь N задач (рандомно
+      вибираємо, що опитувати: додавання чи множення) і проводить опитування.
+      Результати тестування додаються в об’єкт History. Зробити так, щоб об'єкт
+      такого класу можна було створити тільки один. Коли зроблено ці N задач
+      вивести усю історію на екран.
+    </p>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      p {
+        color: #666;
+      }
+
+      table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-top: 20px;
+      }
+
+      th,
+      td,
+      tr {
+        border: 1px solid #000;
+        padding: 8px;
+        text-align: left;
+      }
+    </style>
+
+    <script>
+      class History {
+        static dataArray = [];
+
+        constructor(data) {
+          this.data = data;
+          History.dataArray.push(this.data);
+        }
+        static getDataArray() {
+          return History.dataArray;
+        }
+        static showResult(dataArray = History.dataArray) {
+          document.write(
+            "<table style='border-collapse: collapse;width: 30%;margin: 50px 0 0 35%;text-align:center;'>"
+          );
+          // Заголовок таблиці (thead)
+          document.write("<thead style='border: 1px solid #000;'>");
+          document.write(`
+            <tr style='border: 1px solid #000;'>
+              <th style='border: 1px solid #000;'>№</th>
+              <th style='border: 1px solid #000;'>перше число</th>
+              <th style='border: 1px solid #000;'>операція</th>
+              <th style='border: 1px solid #000;'>друге число</th>
+              <th style='border: 1px solid #000;'>ваша відповідь</th>
+              <th style='border: 1px solid #000;'>правильна відповідь</th>
+            </tr>
+          `);
+          document.write("</thead>");
+          document.write("<tbody>");
+          for (let i = 0; i < dataArray.length; i++) {
+            const {
+              firstNum,
+              operation,
+              secondNum,
+              userAnswer,
+              correctAnswer,
+            } = dataArray[i];
+            document.write(`
+            <tr style='border: 1px solid #000;'>
+              <td style='border: 1px solid #000;'>${i + 1}</td>
+              <td style='border: 1px solid #000;'>${firstNum}</td>
+              <td style='border: 1px solid #000;'>${operation}</td>
+              <td style='border: 1px solid #000;'>${secondNum}</td>
+              <td style='border: 1px solid #000;'>${userAnswer}</td>
+              <td style='border: 1px solid #000;'>${correctAnswer}</td>
+            </tr>
+          `);
+          }
+          document.write("</tbody>");
+          document.write("</table>");
+        }
+      }
+
+      class MultChecker {
+        static getRandomNumber(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        static run() {
+          const firstNum = MultChecker.getRandomNumber(2, 9);
+          const secondNum = MultChecker.getRandomNumber(2, 9);
+          const userTest = parseInt(prompt(`${firstNum} * ${secondNum}`));
+
+          if (!isNaN(userTest)) {
+            const correctAnswer = firstNum * secondNum;
+            const data = {
+              firstNum: firstNum,
+              secondNum: secondNum,
+              operation: "*",
+              correctAnswer: correctAnswer,
+              userAnswer: userTest,
+            };
+            new History(data);
+          } else {
+            console.log("Некоректне введення. Будь ласка, введіть число.");
+          }
+        }
+      }
+      class AddChecker {
+        static getRandomNumber(min, max) {
+          return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        static run(minNumber, maxNumber) {
+          const firstNum = MultChecker.getRandomNumber(minNumber, maxNumber);
+          const secondNum = MultChecker.getRandomNumber(minNumber, maxNumber);
+          const userTest = parseInt(prompt(`${firstNum} + ${secondNum}`));
+
+          if (!isNaN(userTest)) {
+            const correctAnswer = firstNum + secondNum;
+            const data = {
+              firstNum: firstNum,
+              secondNum: secondNum,
+              operation: "+",
+              correctAnswer: correctAnswer,
+              userAnswer: userTest,
+            };
+            new History(data);
+          } else {
+            console.log("Некоректне введення. Будь ласка, введіть число.");
+          }
+        }
+      }
+      class TestManager {
+        static instance;
+        constructor(iterations, timeout) {
+          if (!TestManager.instance) {
+            TestManager.instance = this;
+          }
+          this.iterations = iterations;
+          this.timeout = timeout;
+        }
+        run(minNum, maxNum) {
+          for (let i = 0; i < this.iterations; i++) {
+            setTimeout(() => {
+              const randomOption = Math.random(); // Випадкове число від 0 до 1
+
+              if (randomOption < 0.5) {
+                // Якщо випадкове число менше 0.5, запустити AddChecker
+                AddChecker.run(minNum, maxNum);
+              } else {
+                // В іншому випадку, запустити MultChecker
+                MultChecker.run();
+              }
+            }, this.timeout * i); // Змінив тут, щоб кожна операція викликалася з інтервалом
+          }
+          setTimeout(() => {
+            History.showResult();
+          }, this.timeout * this.iterations); // Показати результати після всіх ітерацій
+        }
+      }
+      let Test = new TestManager(5, 3000);
+      Test.run(1, 10);
+    </script>
+  </body>
+</html>

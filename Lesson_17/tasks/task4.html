@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="../index.html">Назад</a>
+    <h1>Задача 4</h1>
+
+    <p>
+      Особиста бібліотека. Картотека домашньої бібліотеки: дані книги (автори
+      (піб, рік народження, короткий опис), назва книги, жанр, видавництво
+      (назва, реєстраційний номер, рік засування)). Реалізувати розділи
+      бібліотеки організувати додавання/вилучення книг та вибір книг за назвою,
+      за ПІБ автора, за видавництвом.
+    </p>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        padding: 20px;
+        text-align: center;
+      }
+      h1 {
+        color: #333;
+      }
+      p {
+        color: #666;
+      }
+      /* ol{
+				list-style: none;
+			} */
+    </style>
+    <script>
+      class Book {
+        constructor(initData) {
+          Object.assign(this, initData);
+        }
+      }
+      class HomeLibrary {
+        constructor(bookList) {
+          this.bookList = bookList || [];
+        }
+        addBook(book) {
+          this.bookList.push(book);
+        }
+        removeBook(title) {
+          this.bookList = this.bookList.filter((book) => book.title !== title);
+        }
+        filterByTitle(title) {
+          return this.bookList.filter((book) => book.title === title);
+        }
+        filterByPublisherName(publisher) {
+          return this.bookList.filter(
+            (book) => book.publisher.name === publisher
+          );
+        }
+        filterByAuthorsName(name) {
+          return this.bookList.filter((book) => book.authors.name === name);
+        }
+        toString() {
+          let res = this.bookList.map((book) => book.title);
+          return `${res.join(", ")}`;
+        }
+      }
+
+      let bookList = [
+        new Book({
+          authors: [
+            {
+              fullName: "Іван Іванович Іванов",
+              birthYear: 1980,
+              shortDescription:
+                "Відомий український письменник і літературознавець.",
+            },
+          ],
+          title: "Магія слова",
+          genre: "Літературна фантастика",
+          publisher: {
+            name: "Українське Видавництво",
+            registrationNumber: "UA-12345",
+            yearEstablished: 1985,
+          },
+        }),
+        new Book({
+          authors: [
+            {
+              fullName: "Марія Петрівна Сидоренко",
+              birthYear: 1995,
+              shortDescription: "Високоосвічена філософка та поетеса.",
+            },
+          ],
+          title: "Колорит душі",
+          genre: "Поезія",
+          publisher: {
+            name: "Поетичне Видавництво",
+            registrationNumber: "UA-54321",
+            yearEstablished: 2000,
+          },
+        }),
+        new Book({
+          authors: [
+            {
+              fullName: "Олександр Васильович Ковальов",
+              birthYear: 1972,
+              shortDescription: "Історик і автор кращих біографій.",
+            },
+          ],
+          title: "Життя і таємниці Гетьмана",
+          genre: "Історична біографія",
+          publisher: {
+            name: "Історичне Видавництво",
+            registrationNumber: "UA-98765",
+            yearEstablished: 1998,
+          },
+        }),
+        new Book({
+          authors: [
+            {
+              fullName: "Наталія Олександрівна Мельник",
+              birthYear: 1988,
+              shortDescription: "Психолог і автор кращих саморозвиваючих книг.",
+            },
+          ],
+          title: "Розквіт особистості",
+          genre: "Психологія",
+          publisher: {
+            name: "Психологічне Видавництво",
+            registrationNumber: "UA-13579",
+            yearEstablished: 2005,
+          },
+        }),
+      ];
+
+      // let Book2 = new Book({
+      //   authors: [
+      //     {
+      //       fullName: "Марія Петрівна Сидоренко",
+      //       birthYear: 1995,
+      //       shortDescription: "Високоосвічена філософка та поетеса.",
+      //     },
+      //   ],
+      //   title: "Колорит душі",
+      //   genre: "Поезія",
+      //   publisher: {
+      //     name: "Поетичне Видавництво",
+      //     registrationNumber: "UA-54321",
+      //     yearEstablished: 2000,
+      //   },
+      // });
+
+      // let Book3 = new Book({
+      //   authors: [
+      //     {
+      //       fullName: "Олександр Васильович Ковальов",
+      //       birthYear: 1972,
+      //       shortDescription: "Історик і автор кращих біографій.",
+      //     },
+      //   ],
+      //   title: "Життя і таємниці Гетьмана",
+      //   genre: "Історична біографія",
+      //   publisher: {
+      //     name: "Історичне Видавництво",
+      //     registrationNumber: "UA-98765",
+      //     yearEstablished: 1998,
+      //   },
+      // });
+
+      // let Book4 = new Book({
+      //   authors: [
+      //     {
+      //       fullName: "Наталія Олександрівна Мельник",
+      //       birthYear: 1988,
+      //       shortDescription: "Психолог і автор кращих саморозвиваючих книг.",
+      //     },
+      //   ],
+      //   title: "Розквіт особистості",
+      //   genre: "Психологія",
+      //   publisher: {
+      //     name: "Психологічне Видавництво",
+      //     registrationNumber: "UA-13579",
+      //     yearEstablished: 2005,
+      //   },
+      // });
+
+      let Book5 = new Book({
+        authors: [
+          {
+            fullName: "Ольга Миколаївна Шевченко",
+            birthYear: 1990,
+            shortDescription: "Молода і талановита поетеса.",
+          },
+        ],
+        title: "Співзвуччя мрій",
+        genre: "Сучасна поезія",
+        publisher: {
+          name: "Молоде Видавництво",
+          registrationNumber: "UA-24680",
+          yearEstablished: 2010,
+        },
+      });
+
+      let MyLibrary = new HomeLibrary(bookList);
+      console.log(MyLibrary);
+      MyLibrary.addBook(Book5);
+      console.log(MyLibrary.filterByTitle("Розквіт особистості"));
+    </script>
+  </body>
+</html>
