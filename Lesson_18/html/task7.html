@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/Lesson_18/css/task7.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="../index.html">Назад</a>
+    <h1>Задача 6</h1>
+
+    <p>
+      Подорож складається з 3 етапів. На кожному етапі користувач може вибрати
+      один з видів транспорту (авто, автобус, літак - випадаючий список),
+      харчування (сніданок, обід, вечеря – checkbоx) та одного з 3-х
+      гідів(використати - radio buttons). Ціни визначте самі. Підрахувати
+      загальну вартість.
+    </p>
+    <section>
+      <h1>Подорож</h1>
+      <form>
+        <!-- Етап 1 -->
+        <div>
+          <label for="transport1">Вид транспорту:</label>
+          <select id="transport1" name="transport">
+            <option value="50">Авто - $50</option>
+            <option value="30">Автобус - $30</option>
+            <option value="100">Літак - $100</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Харчування:</label>
+          <input type="checkbox" id="breakfast1" name="meal" value="10" />
+          <label for="breakfast1">Сніданок - $10</label>
+
+          <input type="checkbox" id="lunch1" name="meal" value="20" />
+          <label for="lunch1">Обід - $20</label>
+
+          <input type="checkbox" id="dinner1" name="meal" value="15" />
+          <label for="dinner1">Вечеря - $15</label>
+        </div>
+
+        <div>
+          <label>Гід:</label>
+          <input type="radio" id="guide11" name="guide1" value="50" />
+          <label for="guide11">Гід 1 - $50</label>
+
+          <input type="radio" id="guide21" name="guide1" value="40" />
+          <label for="guide21">Гід 2 - $40</label>
+
+          <input type="radio" id="guide31" name="guide1" value="45" />
+          <label for="guide31">Гід 3 - $45</label>
+        </div>
+
+        <!-- Етап 2 -->
+        <div>
+          <label for="transport2">Вид транспорту:</label>
+          <select id="transport2" name="transport">
+            <option value="50">Авто - $50</option>
+            <option value="30">Автобус - $30</option>
+            <option value="100">Літак - $100</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Харчування:</label>
+          <input type="checkbox" id="breakfast2" name="meal" value="10" />
+          <label for="breakfast2">Сніданок - $10</label>
+
+          <input type="checkbox" id="lunch2" name="meal" value="20" />
+          <label for="lunch2">Обід - $20</label>
+
+          <input type="checkbox" id="dinner2" name="meal" value="15" />
+          <label for="dinner2">Вечеря - $15</label>
+        </div>
+
+        <div>
+          <label>Гід:</label>
+          <input type="radio" id="guide12" name="guide2" value="50" />
+          <label for="guide12">Гід 1 - $50</label>
+
+          <input type="radio" id="guide22" name="guide2" value="40" />
+          <label for="guide22">Гід 2 - $40</label>
+
+          <input type="radio" id="guide32" name="guide2" value="45" />
+          <label for="guide32">Гід 3 - $45</label>
+        </div>
+
+        <!-- Етап 3 -->
+        <div>
+          <label for="transport3">Вид транспорту:</label>
+          <select id="transport3" name="transport">
+            <option value="50">Авто - $50</option>
+            <option value="30">Автобус - $30</option>
+            <option value="100">Літак - $100</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Харчування:</label>
+          <input type="checkbox" id="breakfast3" name="meal" value="10" />
+          <label for="breakfast3">Сніданок - $10</label>
+
+          <input type="checkbox" id="lunch3" name="meal" value="20" />
+          <label for="lunch3">Обід - $20</label>
+
+          <input type="checkbox" id="dinner3" name="meal" value="15" />
+          <label for="dinner3">Вечеря - $15</label>
+        </div>
+
+        <div>
+          <label>Гід:</label>
+          <input type="radio" id="guide13" name="guide3" value="50" />
+          <label for="guide13">Гід 1 - $50</label>
+
+          <input type="radio" id="guide23" name="guide3" value="40" />
+          <label for="guide23">Гід 2 - $40</label>
+
+          <input type="radio" id="guide33" name="guide3" value="45" />
+          <label for="guide33">Гід 3 - $45</label>
+        </div>
+
+        <button type="button">Підрахувати вартість</button>
+
+        <div>
+          <label for="total">Загальна вартість:</label>
+          <input type="number" id="total" readonly />
+        </div>
+      </form>
+    </section>
+    <script defer src="/Lesson_18/js/task7.js"></script>
+  </body>
+</html>
