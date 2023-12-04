@@ -85,19 +85,17 @@
           return History.dataArray;
         }
         static showResult(dataArray = History.dataArray) {
-          document.write(
-            "<table style='border-collapse: collapse;width: 30%;margin: 50px 0 0 35%;text-align:center;'>"
-          );
+          document.write("<table>");
           // Заголовок таблиці (thead)
-          document.write("<thead style='border: 1px solid #000;'>");
+          document.write("<thead>");
           document.write(`
-            <tr style='border: 1px solid #000;'>
-              <th style='border: 1px solid #000;'>№</th>
-              <th style='border: 1px solid #000;'>перше число</th>
-              <th style='border: 1px solid #000;'>операція</th>
-              <th style='border: 1px solid #000;'>друге число</th>
-              <th style='border: 1px solid #000;'>ваша відповідь</th>
-              <th style='border: 1px solid #000;'>правильна відповідь</th>
+            <tr>
+              <th>№</th>
+              <th>перше число</th>
+              <th>операція</th>
+              <th>друге число</th>
+              <th>ваша відповідь</th>
+              <th>правильна відповідь</th>
             </tr>
           `);
           document.write("</thead>");
@@ -111,13 +109,13 @@
               correctAnswer,
             } = dataArray[i];
             document.write(`
-            <tr style='border: 1px solid #000;'>
-              <td style='border: 1px solid #000;'>${i + 1}</td>
-              <td style='border: 1px solid #000;'>${firstNum}</td>
-              <td style='border: 1px solid #000;'>${operation}</td>
-              <td style='border: 1px solid #000;'>${secondNum}</td>
-              <td style='border: 1px solid #000;'>${userAnswer}</td>
-              <td style='border: 1px solid #000;'>${correctAnswer}</td>
+            <tr>
+              <td>${i + 1}</td>
+              <td>${firstNum}</td>
+              <td>${operation}</td>
+              <td>${secondNum}</td>
+              <td>${userAnswer}</td>
+              <td>${correctAnswer}</td>
             </tr>
           `);
           }
@@ -134,10 +132,10 @@
         static run() {
           const firstNum = MultChecker.getRandomNumber(2, 9);
           const secondNum = MultChecker.getRandomNumber(2, 9);
+          const correctAnswer = firstNum * secondNum;
           const userTest = parseInt(prompt(`${firstNum} * ${secondNum}`));
 
           if (!isNaN(userTest)) {
-            const correctAnswer = firstNum * secondNum;
             const data = {
               firstNum: firstNum,
               secondNum: secondNum,
